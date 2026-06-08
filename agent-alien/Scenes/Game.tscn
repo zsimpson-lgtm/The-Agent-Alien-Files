@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b7nvuhvekrcca"]
+
+[ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/Player.tscn" id="1_gl6un"]
+[ext_resource type="Script" uid="uid://c8mbe72sddhk5" path="res://Scripts/player.gd" id="2_j5yw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
+size = Vector2(40, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg2ps"]
+
+[node name="Node2D" type="Node2D" unique_id=1983854155]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1371084888]
+position = Vector2(0, 23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1637088843]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_iukft")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=1432663742]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CharacterBody2D2" parent="." unique_id=1100361338 instance=ExtResource("1_gl6un")]
+position = Vector2(4, -14)
+script = ExtResource("2_j5yw3")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D2" unique_id=665921378]
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D2" unique_id=268873807]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2/Area2D" unique_id=1617304991]
+shape = SubResource("RectangleShape2D_cg2ps")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D2/Area2D" unique_id=1292986263]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
