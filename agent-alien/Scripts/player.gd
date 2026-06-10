@@ -14,7 +14,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if not is_on_floorand not .is_colliding():
+
+	
+	if not is_on_floor():
 		gravity = 980
 		velocity.y += gravity * delta
 		
@@ -22,7 +24,12 @@ func _process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	var direction : = Input.get_axis("left", "right")
-	velocity.x = direction * SPEED
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	
 
 	move_and_slide()
 	pass
