@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	look_at(player.global_position)
 	velocity = Vector2(1, 0).rotated(rotation) * speed
 
-	if (player.global_position) == position:
-		self.queue_free()
+
+
 
 	move_and_slide()

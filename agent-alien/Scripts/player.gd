@@ -31,5 +31,17 @@ func _process(delta: float) -> void:
 
 	
 
-	move_and_slide()
 	pass
+
+	move_and_slide()
+
+
+	
+	
+	pass # Replace with function body.
+
+
+#func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+		#if body.is_in_group("Enemy"):
+			#queue_free()
+	

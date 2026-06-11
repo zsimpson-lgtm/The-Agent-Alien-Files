@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/Player.tscn" id="1_gl6un"]
 [ext_resource type="PackedScene" uid="uid://cxncghnh3v6y0" path="res://Scenes/Enemy.tscn" id="2_gl6un"]
+[ext_resource type="Texture2D" uid="uid://bc6whkwhkh3lv" path="res://Assets/Screen Shot 2026-06-11 at 2.55.24 PM.png" id="3_j5yw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
@@ -9,29 +10,32 @@ size = Vector2(1155, 314)
 [node name="Node2D" type="Node2D" unique_id=1983854155]
 
 [node name="Player" parent="." unique_id=1100361338 instance=ExtResource("1_gl6un")]
-position = Vector2(-66, -12)
+position = Vector2(-66, -10)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=665921378]
 position = Vector2(0, 1)
+offset = Vector2(0, -200)
 
 [node name="ColorRect" type="ColorRect" parent="Player" unique_id=1953862432]
-offset_left = -9.0
+offset_left = -10.0
 offset_top = -10.0
-offset_right = 9.0
-offset_bottom = 8.0
+offset_right = 10.0
+offset_bottom = 10.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=174467123]
 position = Vector2(-84, 84)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2114223788]
-position = Vector2(15.5, 74)
+position = Vector2(15.5, 76.5)
+scale = Vector2(-20, 1)
 shape = SubResource("RectangleShape2D_iukft")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1323738905]
-offset_left = -562.0
-offset_top = -81.0
-offset_right = 598.0
-offset_bottom = 236.0
+offset_left = 11684.0
+offset_top = -80.0
+offset_right = 12844.0
+offset_bottom = 237.0
+scale = Vector2(-20, 1)
 color = Color(0.81949073, 0.6109961, 0.318982, 1)
 
 [node name="Enemy" parent="." unique_id=207699790 instance=ExtResource("2_gl6un")]
@@ -42,3 +46,9 @@ offset_left = -9.0
 offset_top = -9.0
 offset_right = 9.0
 offset_bottom = 9.0
+
+[node name="ScreenShot20260611At2_55_24Pm" type="Sprite2D" parent="." unique_id=607886359]
+z_index = -14
+position = Vector2(-2601, -2281)
+scale = Vector2(10.09042, 14.755144)
+texture = ExtResource("3_j5yw3")
