@@ -6,9 +6,12 @@ const JUMP_VELOCITY = -400.0
 var collided_body
 var score: int = 0
 var gravity: = 980
-
+var health: int = 10
+var player = CharacterBody2D
+@export var health_ui: TextureProgressBar
 func _ready() -> void:
-	pass # Replace with function body.
+	health_ui.max_value = health
+	health_ui.value = health
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +32,6 @@ func _process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	
 
 	pass
 
@@ -39,9 +41,15 @@ func _process(delta: float) -> void:
 	
 	
 	pass # Replace with function body.
-
+	
+func take_damage() -> void:
+	if health > 1:
+		health -= 1
+		health_ui.value = health
+	else:
+		get_tree().call_deferred("reload_current_scene")
 
 #func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 		#if body.is_in_group("Enemy"):
-			#queue_free()
+			#player.take_damage
 	
