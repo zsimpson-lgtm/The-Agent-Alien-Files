@@ -2,12 +2,38 @@
 
 [ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/Player.tscn" id="1_gl6un"]
 [ext_resource type="PackedScene" uid="uid://cxncghnh3v6y0" path="res://Scenes/Enemy.tscn" id="2_gl6un"]
-[ext_resource type="Texture2D" uid="uid://bc6whkwhkh3lv" path="res://Assets/Screen Shot 2026-06-11 at 2.55.24 PM.png" id="3_j5yw3"]
+[ext_resource type="Texture2D" uid="uid://bc6whkwhkh3lv" path="res://Assets/Backdrop.png" id="3_j5yw3"]
+[ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/Healthbar_Empty.png" id="4_b2bpf"]
+[ext_resource type="Texture2D" uid="uid://1pesxjxisd1p" path="res://Assets/Healthbar_Full.png" id="5_7lihs"]
+[ext_resource type="Texture2D" uid="uid://0nx088tsqabq" path="res://Assets/Pause.png" id="6_7lihs"]
+[ext_resource type="Texture2D" uid="uid://b6k8texn66orb" path="res://Assets/Agent Alien (5).png" id="7_fgofq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
 
 [node name="Node2D" type="Node2D" unique_id=1983854155]
+top_level = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=586048734]
+offset = Vector2(4, 4)
+scale = Vector2(0.2, 0.2)
+transform = Transform2D(0.2, 0, 0, 0.2, 4, 4)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1462491059]
+show_behind_parent = true
+anchors_preset = -1
+anchor_left = -0.040000003
+anchor_top = -0.18200001
+anchor_right = -0.040000003
+anchor_bottom = -0.18200001
+offset_left = 46.08
+offset_top = 117.936005
+offset_right = 1258.08
+offset_bottom = 466.936
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("4_b2bpf")
+texture_progress = ExtResource("5_7lihs")
 
 [node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("health_ui") instance=ExtResource("1_gl6un")]
 position = Vector2(-66, -10)
@@ -50,21 +76,30 @@ offset_bottom = 9.0
 
 [node name="ScreenShot20260611At2_55_24Pm" type="Sprite2D" parent="." unique_id=607886359]
 z_index = -14
-position = Vector2(-2631, -2272)
+position = Vector2(-2294, -2457.0002)
 scale = Vector2(10.09042, 14.755144)
 texture = ExtResource("3_j5yw3")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=586048734]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1662910130]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1462491059]
-anchors_preset = -1
-anchor_left = -0.040000003
-anchor_top = -0.18200001
-anchor_right = -0.040000003
-anchor_bottom = -0.18200001
-offset_left = -24.919998
-offset_top = -26.063995
-offset_right = 30.080002
-offset_bottom = 21.936005
-max_value = 10.0
-value = 7.0
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer2" unique_id=397797266]
+offset_left = 1118.0
+offset_top = 3.0
+offset_right = 1273.0
+offset_bottom = 213.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("6_7lihs")
+
+[node name="AgentAlien(5)" type="Sprite2D" parent="CanvasLayer2" unique_id=444767274]
+visible = false
+position = Vector2(576.99994, 700)
+scale = Vector2(0.19421557, 0.16578041)
+texture = ExtResource("7_fgofq")
+offset = Vector2(0, -2500)
+
+[node name="Button" type="Button" parent="CanvasLayer2/AgentAlien(5)" unique_id=1412089164]
+visible = false
+offset_left = -762.03955
+offset_top = -3184.936
+offset_right = 725.99756
+offset_bottom = -2726.4983

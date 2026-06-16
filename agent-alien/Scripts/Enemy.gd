@@ -1,13 +1,14 @@
 extends CharacterBody2D
 var speed: float = 250.0
-var player: CharacterBody2D
+var player
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
-	pass			
+	player = get_parent().get_node("Player")
+	pass	
+			
 func _process(delta: float) -> void:
 	look_at(player.global_position)
 	velocity = Vector2(1, 0).rotated(rotation) * speed

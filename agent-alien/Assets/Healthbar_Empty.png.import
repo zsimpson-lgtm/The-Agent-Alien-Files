@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc6whkwhkh3lv"
-path="res://.godot/imported/Screen Shot 2026-06-11 at 2.55.24 PM.png-6a4147b39e2f93889966b7c70bba2f44.ctex"
+uid="uid://bpyvnkpp5oujq"
+path="res://.godot/imported/Healthbar_Empty.png-75e438215cbae55cdcb8a81b2f657f37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Screen Shot 2026-06-11 at 2.55.24 PM.png"
-dest_files=["res://.godot/imported/Screen Shot 2026-06-11 at 2.55.24 PM.png-6a4147b39e2f93889966b7c70bba2f44.ctex"]
+source_file="res://Assets/Healthbar_Empty.png"
+dest_files=["res://.godot/imported/Healthbar_Empty.png-75e438215cbae55cdcb8a81b2f657f37.ctex"]
 
 [params]
 
