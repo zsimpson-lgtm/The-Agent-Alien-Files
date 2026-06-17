@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6k8texn66orb"
-path="res://.godot/imported/Agent Alien (5).png-e0bc77ac16aa3815e3eea212ab42da21.ctex"
+path="res://.godot/imported/Pause_Menu.png-e8d88f3d5d8e530514ad36ee6affb20a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Agent Alien (5).png"
-dest_files=["res://.godot/imported/Agent Alien (5).png-e0bc77ac16aa3815e3eea212ab42da21.ctex"]
+source_file="res://Assets/Pause_Menu.png"
+dest_files=["res://.godot/imported/Pause_Menu.png-e8d88f3d5d8e530514ad36ee6affb20a.ctex"]
 
 [params]
 

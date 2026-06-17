@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/Healthbar_Empty.png" id="4_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://1pesxjxisd1p" path="res://Assets/Healthbar_Full.png" id="5_7lihs"]
 [ext_resource type="Texture2D" uid="uid://0nx088tsqabq" path="res://Assets/Pause.png" id="6_7lihs"]
-[ext_resource type="Texture2D" uid="uid://b6k8texn66orb" path="res://Assets/Agent Alien (5).png" id="7_fgofq"]
+[ext_resource type="Script" uid="uid://d2et78s6i48qk" path="res://Scripts/Pause.gd" id="7_2irst"]
+[ext_resource type="Texture2D" uid="uid://b6k8texn66orb" path="res://Assets/Pause_Menu.png" id="7_fgofq"]
+[ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/Pause_Menu_Play.gd" id="9_bf53h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
@@ -74,9 +76,9 @@ offset_top = -9.0
 offset_right = 9.0
 offset_bottom = 9.0
 
-[node name="ScreenShot20260611At2_55_24Pm" type="Sprite2D" parent="." unique_id=607886359]
+[node name="Background" type="Sprite2D" parent="." unique_id=607886359]
 z_index = -14
-position = Vector2(-2294, -2457.0002)
+position = Vector2(-2869, -1244.0001)
 scale = Vector2(10.09042, 14.755144)
 texture = ExtResource("3_j5yw3")
 
@@ -88,18 +90,40 @@ offset_top = 3.0
 offset_right = 1273.0
 offset_bottom = 213.0
 scale = Vector2(0.2, 0.2)
+toggle_mode = true
 texture_normal = ExtResource("6_7lihs")
+script = ExtResource("7_2irst")
 
-[node name="AgentAlien(5)" type="Sprite2D" parent="CanvasLayer2" unique_id=444767274]
+[node name="PauseMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=444767274]
 visible = false
 position = Vector2(576.99994, 700)
 scale = Vector2(0.19421557, 0.16578041)
 texture = ExtResource("7_fgofq")
 offset = Vector2(0, -2500)
 
-[node name="Button" type="Button" parent="CanvasLayer2/AgentAlien(5)" unique_id=1412089164]
+[node name="Play" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1412089164]
 visible = false
 offset_left = -762.03955
 offset_top = -3184.936
 offset_right = 725.99756
 offset_bottom = -2726.4983
+toggle_mode = true
+action_mode = 0
+script = ExtResource("9_bf53h")
+
+[node name="Restart" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1157154173]
+visible = false
+offset_left = -767.1885
+offset_top = -2286.1567
+offset_right = 720.84863
+offset_bottom = -1827.719
+
+[node name="Menu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1562250499]
+visible = false
+offset_left = -746.5928
+offset_top = -1381.3453
+offset_right = 741.44434
+offset_bottom = -922.9076
+
+[connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Play" to="CanvasLayer2/PauseMenu/Play" method="_on_pressed"]
