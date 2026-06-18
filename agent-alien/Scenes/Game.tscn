@@ -9,9 +9,47 @@
 [ext_resource type="Script" uid="uid://d2et78s6i48qk" path="res://Scripts/Pause.gd" id="7_2irst"]
 [ext_resource type="Texture2D" uid="uid://b6k8texn66orb" path="res://Assets/Pause_Menu.png" id="7_fgofq"]
 [ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/Pause_Menu_Play.gd" id="9_bf53h"]
+[ext_resource type="Script" uid="uid://b7lfti04dej0k" path="res://Scripts/Pause_Menu_Restart.gd" id="10_71axn"]
+[ext_resource type="Script" uid="uid://bl0x3v6xioebp" path="res://Scripts/Pause_Menu_Menu.gd" id="11_dahhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf53h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3so38"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cx6b"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="Node2D" type="Node2D" unique_id=1983854155]
 top_level = true
@@ -28,9 +66,9 @@ anchor_left = -0.040000003
 anchor_top = -0.18200001
 anchor_right = -0.040000003
 anchor_bottom = -0.18200001
-offset_left = 46.08
-offset_top = 117.936005
-offset_right = 1258.08
+offset_left = 33.04
+offset_top = 117.93602
+offset_right = 1245.0399
 offset_bottom = 466.936
 max_value = 10.0
 value = 10.0
@@ -44,12 +82,6 @@ health_ui = NodePath("../CanvasLayer/TextureProgressBar")
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=665921378]
 position = Vector2(0, 1)
 offset = Vector2(0, -200)
-
-[node name="ColorRect" type="ColorRect" parent="Player" unique_id=1953862432]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=174467123]
 position = Vector2(-84, 84)
@@ -66,19 +98,14 @@ offset_right = 12844.0
 offset_bottom = 237.0
 scale = Vector2(-20, 1)
 color = Color(0.81949073, 0.6109961, 0.318982, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Enemy" parent="." unique_id=207699790 instance=ExtResource("2_gl6un")]
 position = Vector2(57, -67)
 
-[node name="ColorRect" type="ColorRect" parent="Enemy" unique_id=1760440488]
-offset_left = -9.0
-offset_top = -9.0
-offset_right = 9.0
-offset_bottom = 9.0
-
 [node name="Background" type="Sprite2D" parent="." unique_id=607886359]
 z_index = -14
-position = Vector2(-2869, -1244.0001)
+position = Vector2(-2981, -1428)
 scale = Vector2(10.09042, 14.755144)
 texture = ExtResource("3_j5yw3")
 
@@ -95,35 +122,43 @@ texture_normal = ExtResource("6_7lihs")
 script = ExtResource("7_2irst")
 
 [node name="PauseMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=444767274]
-visible = false
 position = Vector2(576.99994, 700)
 scale = Vector2(0.19421557, 0.16578041)
 texture = ExtResource("7_fgofq")
 offset = Vector2(0, -2500)
 
 [node name="Play" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1412089164]
-visible = false
+process_mode = 3
 offset_left = -762.03955
 offset_top = -3184.936
 offset_right = 725.99756
 offset_bottom = -2726.4983
+theme_override_styles/normal = SubResource("StyleBoxFlat_bf53h")
 toggle_mode = true
 action_mode = 0
 script = ExtResource("9_bf53h")
 
 [node name="Restart" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1157154173]
-visible = false
+process_mode = 3
 offset_left = -767.1885
 offset_top = -2286.1567
 offset_right = 720.84863
 offset_bottom = -1827.719
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
+theme_override_styles/normal = SubResource("StyleBoxFlat_3so38")
+script = ExtResource("10_71axn")
 
 [node name="Menu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1562250499]
-visible = false
 offset_left = -746.5928
 offset_top = -1381.3453
 offset_right = 741.44434
 offset_bottom = -922.9076
+theme_override_styles/normal = SubResource("StyleBoxFlat_3cx6b")
+script = ExtResource("11_dahhg")
 
 [connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Play" to="CanvasLayer2/PauseMenu/Play" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Restart" to="CanvasLayer2/PauseMenu/Restart" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Menu" to="CanvasLayer2/PauseMenu/Menu" method="_on_pressed"]
