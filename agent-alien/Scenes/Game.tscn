@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/Pause_Menu_Play.gd" id="9_bf53h"]
 [ext_resource type="Script" uid="uid://b7lfti04dej0k" path="res://Scripts/Pause_Menu_Restart.gd" id="10_71axn"]
 [ext_resource type="Script" uid="uid://bl0x3v6xioebp" path="res://Scripts/Pause_Menu_Menu.gd" id="11_dahhg"]
+[ext_resource type="Texture2D" uid="uid://f4lvd2oxpl44" path="res://Assets/Agent Alien (6).png" id="12_3so38"]
+[ext_resource type="Script" uid="uid://c751ok6jx0kk" path="res://Scripts/Play_Main_Menu.gd" id="13_3cx6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
@@ -40,6 +42,18 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cx6b"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxwew"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -102,10 +116,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Enemy" parent="." unique_id=207699790 instance=ExtResource("2_gl6un")]
 position = Vector2(57, -67)
+slide_on_ceiling = false
 
 [node name="Background" type="Sprite2D" parent="." unique_id=607886359]
 z_index = -14
-position = Vector2(-2981, -1428)
+position = Vector2(-2977, -1402)
 scale = Vector2(10.09042, 14.755144)
 texture = ExtResource("3_j5yw3")
 
@@ -122,12 +137,13 @@ texture_normal = ExtResource("6_7lihs")
 script = ExtResource("7_2irst")
 
 [node name="PauseMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=444767274]
+visible = false
 position = Vector2(576.99994, 700)
 scale = Vector2(0.19421557, 0.16578041)
 texture = ExtResource("7_fgofq")
 offset = Vector2(0, -2500)
 
-[node name="Play" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1412089164]
+[node name="PlayPauseMenu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1412089164]
 process_mode = 3
 offset_left = -762.03955
 offset_top = -3184.936
@@ -151,6 +167,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_3so38")
 script = ExtResource("10_71axn")
 
 [node name="Menu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1562250499]
+process_mode = 3
 offset_left = -746.5928
 offset_top = -1381.3453
 offset_right = 741.44434
@@ -158,7 +175,30 @@ offset_bottom = -922.9076
 theme_override_styles/normal = SubResource("StyleBoxFlat_3cx6b")
 script = ExtResource("11_dahhg")
 
+[node name="MainMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=1656267372]
+position = Vector2(572, 321)
+scale = Vector2(0.19227444, 0.19044577)
+texture = ExtResource("12_3so38")
+
+[node name="PlayMainMenu" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1080997465]
+process_mode = 3
+offset_left = -754.1304
+offset_top = 78.76258
+offset_right = 858.14844
+offset_bottom = 372.80945
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxwew")
+script = ExtResource("13_3cx6b")
+
+[node name="Button2" type="Button" parent="CanvasLayer2/MainMenu" unique_id=257785428]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button3" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1784588953]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer2/PauseMenu/Play" to="CanvasLayer2/PauseMenu/Play" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/PlayPauseMenu" to="CanvasLayer2/PauseMenu/PlayPauseMenu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Restart" to="CanvasLayer2/PauseMenu/Restart" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Menu" to="CanvasLayer2/PauseMenu/Menu" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer2/MainMenu/PlayMainMenu" to="CanvasLayer2/MainMenu/PlayMainMenu" method="_on_pressed"]

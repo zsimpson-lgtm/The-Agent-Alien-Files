@@ -11,9 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_pressed() -> void:
-	get_tree().paused=false
+func _on_pressed() -> void:	
 	$"..".hide()
-	$"../PlayPauseMenu".hide()
-	$"../Restart".hide()
-	$"../Menu".hide()
+	get_tree().paused = false
+	

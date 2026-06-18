@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bj1rmf28mr5hy" path="res://Assets/Bomber.png" id="2_wovta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
-size = Vector2(39.26335, 45.615597)
+size = Vector2(38.834953, 47.57282)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeo28"]
-size = Vector2(37.875, 45.84375)
+size = Vector2(37.875, 47)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=428399118 groups=["Enemy", "enemy"]]
 texture_filter = 1
@@ -16,12 +16,12 @@ script = ExtResource("1_hghv2")
 [node name="Area2D" type="Area2D" parent="." unique_id=1810061324]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1587970002]
-position = Vector2(-9.779376, -8.50797)
+position = Vector2(-10, -8.5)
 scale = Vector2(1.03, 1.03)
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779349581]
-position = Vector2(-9.9375, -7.921875)
+position = Vector2(-9.9375, -8.5)
 shape = SubResource("RectangleShape2D_xeo28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=482516205]
