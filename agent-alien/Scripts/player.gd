@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
+const SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 var collided_body
 var score: int = 0
@@ -9,6 +9,7 @@ var gravity: = 980
 var health: int = 10
 var player 
 @export var health_ui: TextureProgressBar
+@export var regen_amount: int = 1
 func _ready() -> void:
 	health_ui.max_value = health
 	health_ui.value = health
@@ -50,3 +51,8 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 
 func _on_play_pressed() -> void:
 	get_tree().paused = false
+
+
+func _on_regen_timer_timeout() -> void:
+	if health < 10:
+		health_ui.value += regen_amount

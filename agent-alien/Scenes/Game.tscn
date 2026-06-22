@@ -11,8 +11,12 @@
 [ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/Pause_Menu_Play.gd" id="9_bf53h"]
 [ext_resource type="Script" uid="uid://b7lfti04dej0k" path="res://Scripts/Pause_Menu_Restart.gd" id="10_71axn"]
 [ext_resource type="Script" uid="uid://bl0x3v6xioebp" path="res://Scripts/Pause_Menu_Menu.gd" id="11_dahhg"]
-[ext_resource type="Texture2D" uid="uid://f4lvd2oxpl44" path="res://Assets/Agent Alien (6).png" id="12_3so38"]
+[ext_resource type="Texture2D" uid="uid://f4lvd2oxpl44" path="res://Assets/MainMenu.png" id="12_3so38"]
 [ext_resource type="Script" uid="uid://c751ok6jx0kk" path="res://Scripts/Play_Main_Menu.gd" id="13_3cx6b"]
+[ext_resource type="Script" uid="uid://c7k15ck58duvr" path="res://Scripts/Encyclopedia.gd" id="14_acvyw"]
+[ext_resource type="Texture2D" uid="uid://k7mw26om5x76" path="res://Assets/Monster_Encyclopedia.png" id="15_alh3a"]
+[ext_resource type="Texture2D" uid="uid://dg82m67se8ywm" path="res://Assets/MenuButton.png" id="16_4q8tf"]
+[ext_resource type="Script" uid="uid://d1gr2ke1bulus" path="res://Scripts/Encyclopedia_Main_Menu.gd" id="17_x3xnh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
@@ -65,6 +69,18 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acvyw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [node name="Node2D" type="Node2D" unique_id=1983854155]
 top_level = true
 
@@ -88,6 +104,10 @@ max_value = 10.0
 value = 10.0
 texture_under = ExtResource("4_b2bpf")
 texture_progress = ExtResource("5_7lihs")
+
+[node name="RegenTimer" type="Timer" parent="CanvasLayer/TextureProgressBar" unique_id=1847830039]
+wait_time = 1.033
+autostart = true
 
 [node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("health_ui") instance=ExtResource("1_gl6un")]
 position = Vector2(-66, -10)
@@ -115,12 +135,12 @@ color = Color(0.81949073, 0.6109961, 0.318982, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Enemy" parent="." unique_id=207699790 instance=ExtResource("2_gl6un")]
-position = Vector2(57, -67)
+position = Vector2(57, -10)
 slide_on_ceiling = false
 
 [node name="Background" type="Sprite2D" parent="." unique_id=607886359]
 z_index = -14
-position = Vector2(-2977, -1402)
+position = Vector2(-3101.9998, -1275)
 scale = Vector2(10.09042, 14.755144)
 texture = ExtResource("3_j5yw3")
 
@@ -189,16 +209,38 @@ offset_bottom = 372.80945
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxwew")
 script = ExtResource("13_3cx6b")
 
-[node name="Button2" type="Button" parent="CanvasLayer2/MainMenu" unique_id=257785428]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="MonsterEncyclopedia" type="Button" parent="CanvasLayer2/MainMenu" unique_id=257785428]
+offset_left = 1300.225
+offset_top = 1407.225
+offset_right = 2912.504
+offset_bottom = 1575.2516
+theme_override_styles/normal = SubResource("StyleBoxFlat_acvyw")
+script = ExtResource("14_acvyw")
 
 [node name="Button3" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1784588953]
 offset_right = 8.0
 offset_bottom = 8.0
 
+[node name="MonsterEncyclopedia" type="Sprite2D" parent="CanvasLayer2" unique_id=481017261]
+visible = false
+position = Vector2(576.5, 326.25)
+scale = Vector2(1.2516198, 1.2456979)
+texture = ExtResource("15_alh3a")
+
+[node name="EncyclopediaMainMenu" type="TextureButton" parent="CanvasLayer2/MonsterEncyclopedia" unique_id=717755840]
+offset_left = -460.60312
+offset_top = -260.29587
+offset_right = 1464.3969
+offset_bottom = 242.70413
+scale = Vector2(0.0658434, 0.067151755)
+texture_normal = ExtResource("16_4q8tf")
+script = ExtResource("17_x3xnh")
+
+[connection signal="timeout" from="CanvasLayer/TextureProgressBar/RegenTimer" to="Player" method="_on_regen_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/PlayPauseMenu" to="CanvasLayer2/PauseMenu/PlayPauseMenu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Restart" to="CanvasLayer2/PauseMenu/Restart" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Menu" to="CanvasLayer2/PauseMenu/Menu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MainMenu/PlayMainMenu" to="CanvasLayer2/MainMenu/PlayMainMenu" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer2/MainMenu/MonsterEncyclopedia" to="CanvasLayer2/MainMenu/MonsterEncyclopedia" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" to="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" method="_on_pressed"]

@@ -13,14 +13,22 @@ func _process(delta: float) -> void:
 	if not is_on_floor():
 		gravity = 980
 		velocity.y += gravity * delta
-	#else:
-		#look_at(player.global_position)	
-		#velocity = Vector2(1, 0).rotated(rotation) * speed
-	#
+	look_at(player.global_position)	
+	velocity = Vector2(1, 0) * speed
+
+	if player.global_position < global_position:
+		_flip()
+	elif player.global_position == global_position:
+		velocity = Vector2(0,0) * speed
+
+
+	
 	move_and_slide()
 
 func _flip():
 	$Sprite2D.flip_h
+	look_at(player.global_position)	
+	velocity = Vector2(-1, 0) * speed
 	
 
 func _damage_player(body: Node2D) -> void:
