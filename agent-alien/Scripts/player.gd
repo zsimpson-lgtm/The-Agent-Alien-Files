@@ -33,6 +33,10 @@ func _process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if Input.is_action_pressed("attack"):
+		$AnimatedSprite2D.play("default")
+		
 
 
 	move_and_slide()
@@ -45,7 +49,7 @@ func take_damage() -> void:
 		get_tree().call_deferred("reload_current_scene")
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-		if body.is_in_group("Enemy"):
+		if body.is_in_group("Enemy") and $AnimatedSprite2D.is_playing("default"):
 			player.take_damage()
 
 
