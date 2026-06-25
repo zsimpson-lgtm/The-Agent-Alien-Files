@@ -110,7 +110,7 @@ wait_time = 1.033
 autostart = true
 
 [node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("health_ui") instance=ExtResource("1_gl6un")]
-position = Vector2(-66, -10)
+position = Vector2(-58, -34)
 health_ui = NodePath("../CanvasLayer/TextureProgressBar")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=665921378]
@@ -134,13 +134,23 @@ scale = Vector2(-20, 1)
 color = Color(0.81949073, 0.6109961, 0.318982, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Enemy" parent="." unique_id=207699790 instance=ExtResource("2_gl6un")]
-position = Vector2(57, -10)
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=504788388]
+offset_left = 57.0
+offset_top = -10.0
+offset_right = 61.0
+offset_bottom = 17.0
+min_value = 2.0
+max_value = 2.0
+value = 2.0
+
+[node name="Enemy" parent="." unique_id=207699790 node_paths=PackedStringArray("health_ui") instance=ExtResource("2_gl6un")]
+position = Vector2(52, -10)
 slide_on_ceiling = false
+health_ui = NodePath("../ProgressBar")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=607886359]
 z_index = -14
-position = Vector2(-3101.9998, -1275)
+position = Vector2(-3129, -1242)
 scale = Vector2(10.09042, 14.755144)
 texture = ExtResource("3_j5yw3")
 

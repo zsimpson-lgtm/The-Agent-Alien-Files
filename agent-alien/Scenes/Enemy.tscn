@@ -16,16 +16,16 @@ script = ExtResource("1_hghv2")
 [node name="Area2D" type="Area2D" parent="." unique_id=1810061324]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1587970002]
-position = Vector2(-10, -8.5)
+position = Vector2(0, 14)
 scale = Vector2(1.03, 1.03)
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779349581]
-position = Vector2(-9.9375, -8.5)
+position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_xeo28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=482516205]
-position = Vector2(-10, -18.250002)
+position = Vector2(0, 4)
 scale = Vector2(0.640625, 0.52734375)
 texture = ExtResource("2_wovta")
 

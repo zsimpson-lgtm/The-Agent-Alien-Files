@@ -42,24 +42,25 @@ script = ExtResource("1_rpqav")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1565923269]
 texture_filter = 1
-position = Vector2(-0.49999952, 30.5)
+position = Vector2(-0.99999994, 0)
 scale = Vector2(5.5, 5.5)
 shape = SubResource("RectangleShape2D_qbkls")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1387916537]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=882496144]
-position = Vector2(-0.49999702, 30.5)
+position = Vector2(-1, 0)
 scale = Vector2(5.5, 5.5)
 shape = SubResource("RectangleShape2D_rpqav")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=278426964]
 texture_filter = 1
-position = Vector2(3.4999962, 5.0000033)
+position = Vector2(1.9999981, -26)
 scale = Vector2(1.0234375, 0.99999994)
 texture = ExtResource("2_kyqiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=367247104]
+position = Vector2(1, -26)
 sprite_frames = SubResource("SpriteFrames_yoq75")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

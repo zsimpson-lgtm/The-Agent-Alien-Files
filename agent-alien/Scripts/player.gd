@@ -10,6 +10,8 @@ var health: int = 10
 var player 
 @export var health_ui: TextureProgressBar
 @export var regen_amount: int = 1
+
+
 func _ready() -> void:
 	health_ui.max_value = health
 	health_ui.value = health
@@ -49,9 +51,9 @@ func take_damage() -> void:
 		get_tree().call_deferred("reload_current_scene")
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-		if body.is_in_group("Enemy") and $AnimatedSprite2D.is_playing("default"):
+		if body.is_in_group("Enemy"):
 			player.take_damage()
-
+			
 
 func _on_play_pressed() -> void:
 	get_tree().paused = false
