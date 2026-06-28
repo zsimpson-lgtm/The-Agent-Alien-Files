@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://k7mw26om5x76" path="res://Assets/Monster_Encyclopedia.png" id="15_alh3a"]
 [ext_resource type="Texture2D" uid="uid://dg82m67se8ywm" path="res://Assets/MenuButton.png" id="16_4q8tf"]
 [ext_resource type="Script" uid="uid://d1gr2ke1bulus" path="res://Scripts/Encyclopedia_Main_Menu.gd" id="17_x3xnh"]
+[ext_resource type="Script" uid="uid://1d5mrsomqn0n" path="res://Scripts/Enemy_Main.gd" id="18_x3xnh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
@@ -100,8 +101,7 @@ offset_left = 33.04
 offset_top = 117.93602
 offset_right = 1245.0399
 offset_bottom = 466.936
-max_value = 10.0
-value = 10.0
+value = 100.0
 texture_under = ExtResource("4_b2bpf")
 texture_progress = ExtResource("5_7lihs")
 
@@ -110,7 +110,7 @@ wait_time = 1.033
 autostart = true
 
 [node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("health_ui") instance=ExtResource("1_gl6un")]
-position = Vector2(-58, -34)
+position = Vector2(-120, -34)
 health_ui = NodePath("../CanvasLayer/TextureProgressBar")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=665921378]
@@ -134,23 +134,9 @@ scale = Vector2(-20, 1)
 color = Color(0.81949073, 0.6109961, 0.318982, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=504788388]
-offset_left = 57.0
-offset_top = -10.0
-offset_right = 61.0
-offset_bottom = 17.0
-min_value = 2.0
-max_value = 2.0
-value = 2.0
-
-[node name="Enemy" parent="." unique_id=207699790 node_paths=PackedStringArray("health_ui") instance=ExtResource("2_gl6un")]
-position = Vector2(52, -10)
-slide_on_ceiling = false
-health_ui = NodePath("../ProgressBar")
-
 [node name="Background" type="Sprite2D" parent="." unique_id=607886359]
 z_index = -14
-position = Vector2(-3129, -1242)
+position = Vector2(-797, -2090)
 scale = Vector2(10.09042, 14.755144)
 texture = ExtResource("3_j5yw3")
 
@@ -246,6 +232,17 @@ scale = Vector2(0.0658434, 0.067151755)
 texture_normal = ExtResource("16_4q8tf")
 script = ExtResource("17_x3xnh")
 
+[node name="Enemy" parent="." unique_id=207699790 instance=ExtResource("2_gl6un")]
+visible = false
+position = Vector2(190, -155)
+slide_on_ceiling = false
+script = ExtResource("18_x3xnh")
+enemy_health = 2
+
+[node name="Timer2" type="Timer" parent="Enemy" unique_id=1833584203]
+wait_time = 2.0
+autostart = true
+
 [connection signal="timeout" from="CanvasLayer/TextureProgressBar/RegenTimer" to="Player" method="_on_regen_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/PlayPauseMenu" to="CanvasLayer2/PauseMenu/PlayPauseMenu" method="_on_pressed"]
@@ -254,3 +251,4 @@ script = ExtResource("17_x3xnh")
 [connection signal="pressed" from="CanvasLayer2/MainMenu/PlayMainMenu" to="CanvasLayer2/MainMenu/PlayMainMenu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MainMenu/MonsterEncyclopedia" to="CanvasLayer2/MainMenu/MonsterEncyclopedia" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" to="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" method="_on_pressed"]
+[connection signal="timeout" from="Enemy/Timer2" to="Enemy" method="_on_timer_2_timeout"]

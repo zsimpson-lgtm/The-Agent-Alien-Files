@@ -6,16 +6,19 @@ const JUMP_VELOCITY = -400.0
 var collided_body
 var score: int = 0
 var gravity: = 980
-var health: int = 10
+var health: int = 100
 var player 
 @export var health_ui: TextureProgressBar
-@export var regen_amount: int = 1
+@export var regen_amount: int = 5
+@onready var anim_player: AnimatedSprite2D = $AnimatedSprite2D
+
 
 
 func _ready() -> void:
 	health_ui.max_value = health
 	health_ui.value = health
 	player = get_parent().get_node("Player")
+	get_tree().paused = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,7 +48,7 @@ func _process(delta: float) -> void:
 
 func take_damage() -> void:
 	if health > 1:
-		health -= 1
+		health -= 5
 		health_ui.value = health
 	else:
 		get_tree().call_deferred("reload_current_scene")
@@ -60,5 +63,5 @@ func _on_play_pressed() -> void:
 
 
 func _on_regen_timer_timeout() -> void:
-	if health < 10:
+	if health < 100:
 		health_ui.value += regen_amount

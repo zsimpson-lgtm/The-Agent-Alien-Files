@@ -11,7 +11,7 @@
 size = Vector2(20.181818, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
-size = Vector2(20.545454, 14.363636)
+size = Vector2(21.272726, 14.90909)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yoq75"]
 animations = [{
@@ -30,10 +30,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_nn08x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nn08x")
 }],
 "loop": false,
 "name": &"default",
-"speed": 17.0
+"speed": 6.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1100361338 groups=["Player", "player"]]
@@ -46,11 +49,11 @@ position = Vector2(-0.99999994, 0)
 scale = Vector2(5.5, 5.5)
 shape = SubResource("RectangleShape2D_qbkls")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1387916537]
+[node name="Area2D" type="Area2D" parent="." unique_id=1387916537 groups=["Player", "player"]]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=882496144]
-position = Vector2(-1, 0)
-scale = Vector2(5.5, 5.5)
+position = Vector2(-0.49999785, 0)
+scale = Vector2(6.7, 6.7)
 shape = SubResource("RectangleShape2D_rpqav")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=278426964]

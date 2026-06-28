@@ -9,11 +9,12 @@ size = Vector2(38.834953, 47.57282)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeo28"]
 size = Vector2(37.875, 47)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=428399118 groups=["Enemy", "enemy"]]
+[node name="da" type="CharacterBody2D" unique_id=428399118 groups=["Enemy", "enemy"]]
+process_mode = 3
 texture_filter = 1
 script = ExtResource("1_hghv2")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1810061324]
+[node name="Area2D" type="Area2D" parent="." unique_id=1810061324 groups=["Enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1587970002]
 position = Vector2(0, 14)
