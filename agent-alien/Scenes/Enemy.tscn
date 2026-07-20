@@ -1,33 +1,79 @@
 [gd_scene format=3 uid="uid://cxncghnh3v6y0"]
 
 [ext_resource type="Script" uid="uid://f3oattni62r0" path="res://Scripts/Enemy.gd" id="1_hghv2"]
-[ext_resource type="Texture2D" uid="uid://bj1rmf28mr5hy" path="res://Assets/Bomber.png" id="2_wovta"]
+[ext_resource type="Texture2D" uid="uid://67koft7xj70o" path="res://Assets/roll0000.png" id="2_idouy"]
+[ext_resource type="Texture2D" uid="uid://bsg4t64sregmg" path="res://Assets/roll0001.png" id="3_0o0ue"]
+[ext_resource type="Texture2D" uid="uid://jxh6lgmbhyn2" path="res://Assets/roll0002.png" id="4_6s1gy"]
+[ext_resource type="Texture2D" uid="uid://dgy7etwlima0" path="res://Assets/roll0003.png" id="5_uihya"]
+[ext_resource type="Texture2D" uid="uid://be1u3i1jaebds" path="res://Assets/roll0004.png" id="6_27ry8"]
+[ext_resource type="Texture2D" uid="uid://cxrw7ntj7agel" path="res://Assets/roll0005.png" id="7_esfq3"]
+[ext_resource type="Texture2D" uid="uid://bfkf4kw1hsu7c" path="res://Assets/roll0006.png" id="8_qlal6"]
+[ext_resource type="Texture2D" uid="uid://de2r5ochsq0ji" path="res://Assets/roll0007.png" id="9_dascy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
-size = Vector2(38.834953, 47.57282)
+[sub_resource type="CircleShape2D" id="CircleShape2D_idouy"]
+radius = 29.537361
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xeo28"]
-size = Vector2(37.875, 47)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0o0ue"]
+radius = 28.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rm7px"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_idouy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0o0ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6s1gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uihya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_27ry8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_esfq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qlal6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dascy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="da" type="CharacterBody2D" unique_id=428399118 groups=["Enemy", "enemy"]]
-process_mode = 3
 texture_filter = 1
 script = ExtResource("1_hghv2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1810061324 groups=["Enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1587970002]
-position = Vector2(0, 14)
-scale = Vector2(1.03, 1.03)
-shape = SubResource("RectangleShape2D_1f0kj")
+position = Vector2(0.50000095, -6.4999995)
+scale = Vector2(1, 1.01)
+shape = SubResource("CircleShape2D_idouy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779349581]
-position = Vector2(0, 14)
-shape = SubResource("RectangleShape2D_xeo28")
+position = Vector2(1, -6)
+shape = SubResource("CircleShape2D_0o0ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=482516205]
-position = Vector2(0, 4)
-scale = Vector2(0.640625, 0.52734375)
-texture = ExtResource("2_wovta")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=11175689]
+position = Vector2(0.43749428, -6.8124943)
+scale = Vector2(0.08619928, 0.09237215)
+sprite_frames = SubResource("SpriteFrames_rm7px")
+autoplay = "default"
+frame_progress = 0.6355647
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=350956009]
+visible = false
+position = Vector2(5.551115e-17, -7.0000005)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_idouy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
