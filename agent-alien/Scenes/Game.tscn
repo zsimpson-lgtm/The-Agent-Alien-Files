@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b7nvuhvekrcca"]
 
 [ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/Player.tscn" id="1_gl6un"]
+[ext_resource type="Script" uid="uid://bgdbuc2uu2hoa" path="res://Scripts/Score_Label.gd" id="1_tfod6"]
 [ext_resource type="PackedScene" uid="uid://cxncghnh3v6y0" path="res://Scenes/Enemy.tscn" id="2_gl6un"]
 [ext_resource type="Texture2D" uid="uid://bc6whkwhkh3lv" path="res://Assets/Backdrop.png" id="3_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/Healthbar_Empty.png" id="4_b2bpf"]
@@ -19,6 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://dg82m67se8ywm" path="res://Assets/MenuButton.png" id="16_4q8tf"]
 [ext_resource type="Script" uid="uid://d1gr2ke1bulus" path="res://Scripts/Encyclopedia_Main_Menu.gd" id="17_x3xnh"]
 [ext_resource type="Script" uid="uid://1d5mrsomqn0n" path="res://Scripts/Enemy_Main.gd" id="18_x3xnh"]
+[ext_resource type="PackedScene" uid="uid://cfm2bxytmk1mw" path="res://Scenes/Enemy_Lava.tscn" id="21_vvhu1"]
+[ext_resource type="PackedScene" uid="uid://8hvo8nw7j7ro" path="res://Scenes/Lava.tscn" id="22_lbihj"]
+[ext_resource type="Script" uid="uid://der7olvy8qtoa" path="res://Scripts/Enemy_Lava_Main.gd" id="22_raj38"]
+[ext_resource type="Script" uid="uid://pw4jjl7t338" path="res://Scripts/Lava.gd" id="24_raj38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
@@ -102,6 +107,14 @@ top_level = true
 offset = Vector2(4, 4)
 scale = Vector2(0.2, 0.2)
 transform = Transform2D(0.2, 0, 0, 0.2, 4, 4)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=993862562]
+offset_left = -13.0
+offset_right = 1118.0
+offset_bottom = 409.0
+theme_override_font_sizes/font_size = 300
+text = "Score: 0"
+script = ExtResource("1_tfod6")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1462491059]
 show_behind_parent = true
@@ -260,7 +273,23 @@ script = ExtResource("18_x3xnh")
 enemy_health = 2
 
 [node name="Timer2" type="Timer" parent="Enemy" unique_id=1833584203]
-wait_time = 2.0
+wait_time = 1.45
+autostart = true
+
+[node name="Enemy_Lava" parent="." unique_id=1905237066 instance=ExtResource("21_vvhu1")]
+position = Vector2(-22, -11)
+script = ExtResource("22_raj38")
+
+[node name="Timer2" type="Timer" parent="Enemy_Lava" unique_id=384944045]
+wait_time = 1.44
+autostart = true
+
+[node name="Lava" parent="." unique_id=139077602 instance=ExtResource("22_lbihj")]
+position = Vector2(-204, 155)
+script = ExtResource("24_raj38")
+
+[node name="Timer" type="Timer" parent="Lava" unique_id=1532479186]
+wait_time = 0.097
 autostart = true
 
 [connection signal="timeout" from="CanvasLayer/TextureProgressBar/RegenTimer" to="Player" method="_on_regen_timer_timeout"]
@@ -273,3 +302,5 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer2/MainMenu/Quit" to="CanvasLayer2/MainMenu/Quit" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" to="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" method="_on_pressed"]
 [connection signal="timeout" from="Enemy/Timer2" to="Enemy" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Enemy_Lava/Timer2" to="Enemy_Lava" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Lava/Timer" to="Lava" method="_on_timer_timeout"]

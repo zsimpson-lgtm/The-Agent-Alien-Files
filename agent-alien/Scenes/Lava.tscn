@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://8hvo8nw7j7ro"]
+
+[ext_resource type="Script" uid="uid://pw4jjl7t338" path="res://Scripts/Lava.gd" id="1_06q7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rhe2"]
+size = Vector2(38.5, 11)
+
+[node name="Node2D" type="Node2D" unique_id=139077602]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1938098709]
+script = ExtResource("1_06q7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1195593761]
+position = Vector2(-34.25, 6.5)
+shape = SubResource("RectangleShape2D_8rhe2")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=1051783266]
+offset_left = -53.0
+offset_right = -15.0
+offset_bottom = 12.0
+color = Color(1, 0.42745098, 0.16862746, 1)
