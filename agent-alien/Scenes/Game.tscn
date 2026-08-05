@@ -1,23 +1,22 @@
 [gd_scene format=3 uid="uid://b7nvuhvekrcca"]
 
 [ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/Player.tscn" id="1_gl6un"]
-[ext_resource type="Script" uid="uid://bgdbuc2uu2hoa" path="res://Scripts/Score_Label.gd" id="1_tfod6"]
 [ext_resource type="PackedScene" uid="uid://cxncghnh3v6y0" path="res://Scenes/Enemy.tscn" id="2_gl6un"]
-[ext_resource type="Texture2D" uid="uid://bc6whkwhkh3lv" path="res://Assets/Backdrop.png" id="3_j5yw3"]
-[ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/Healthbar_Empty.png" id="4_b2bpf"]
-[ext_resource type="Texture2D" uid="uid://1pesxjxisd1p" path="res://Assets/Healthbar_Full.png" id="5_7lihs"]
-[ext_resource type="Texture2D" uid="uid://0nx088tsqabq" path="res://Assets/Pause.png" id="6_7lihs"]
+[ext_resource type="Texture2D" uid="uid://bc6whkwhkh3lv" path="res://Assets/UI/Backdrop.png" id="3_j5yw3"]
+[ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/UI/Healthbar_Empty.png" id="4_b2bpf"]
+[ext_resource type="Texture2D" uid="uid://1pesxjxisd1p" path="res://Assets/UI/Healthbar_Full.png" id="5_7lihs"]
+[ext_resource type="Texture2D" uid="uid://0nx088tsqabq" path="res://Assets/UI/Pause.png" id="6_7lihs"]
 [ext_resource type="Script" uid="uid://d2et78s6i48qk" path="res://Scripts/Pause.gd" id="7_2irst"]
-[ext_resource type="Texture2D" uid="uid://b6k8texn66orb" path="res://Assets/Pause_Menu.png" id="7_fgofq"]
+[ext_resource type="Texture2D" uid="uid://b6k8texn66orb" path="res://Assets/UI/Pause_Menu.png" id="7_fgofq"]
 [ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/Pause_Menu_Play.gd" id="9_bf53h"]
 [ext_resource type="Script" uid="uid://b7lfti04dej0k" path="res://Scripts/Pause_Menu_Restart.gd" id="10_71axn"]
 [ext_resource type="Script" uid="uid://bl0x3v6xioebp" path="res://Scripts/Pause_Menu_Menu.gd" id="11_dahhg"]
-[ext_resource type="Texture2D" uid="uid://f4lvd2oxpl44" path="res://Assets/MainMenu.png" id="12_3so38"]
+[ext_resource type="Texture2D" uid="uid://f4lvd2oxpl44" path="res://Assets/UI/MainMenu.png" id="12_3so38"]
 [ext_resource type="Script" uid="uid://c751ok6jx0kk" path="res://Scripts/Play_Main_Menu.gd" id="13_3cx6b"]
 [ext_resource type="Script" uid="uid://dfvw3o0odyapk" path="res://Scripts/Quit.gd" id="14_8r6kd"]
 [ext_resource type="Script" uid="uid://c7k15ck58duvr" path="res://Scripts/Encyclopedia.gd" id="14_acvyw"]
-[ext_resource type="Texture2D" uid="uid://k7mw26om5x76" path="res://Assets/Monster_Encyclopedia.png" id="15_alh3a"]
-[ext_resource type="Texture2D" uid="uid://dg82m67se8ywm" path="res://Assets/MenuButton.png" id="16_4q8tf"]
+[ext_resource type="Texture2D" uid="uid://k7mw26om5x76" path="res://Assets/UI/Monster_Encyclopedia.png" id="15_alh3a"]
+[ext_resource type="Texture2D" uid="uid://dg82m67se8ywm" path="res://Assets/UI/MenuButton.png" id="16_4q8tf"]
 [ext_resource type="Script" uid="uid://d1gr2ke1bulus" path="res://Scripts/Encyclopedia_Main_Menu.gd" id="17_x3xnh"]
 [ext_resource type="Script" uid="uid://1d5mrsomqn0n" path="res://Scripts/Enemy_Main.gd" id="18_x3xnh"]
 [ext_resource type="PackedScene" uid="uid://cfm2bxytmk1mw" path="res://Scenes/Enemy_Lava.tscn" id="21_vvhu1"]
@@ -108,14 +107,6 @@ offset = Vector2(4, 4)
 scale = Vector2(0.2, 0.2)
 transform = Transform2D(0.2, 0, 0, 0.2, 4, 4)
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=993862562]
-offset_left = -13.0
-offset_right = 1118.0
-offset_bottom = 409.0
-theme_override_font_sizes/font_size = 300
-text = "Score: 0"
-script = ExtResource("1_tfod6")
-
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1462491059]
 show_behind_parent = true
 anchors_preset = -1
@@ -162,8 +153,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=607886359]
 z_index = -14
-position = Vector2(-797, -2090)
-scale = Vector2(10.09042, 14.755144)
+position = Vector2(337.49976, -2042.75)
+scale = Vector2(26.575888, 14.5606985)
 texture = ExtResource("3_j5yw3")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1662910130]
@@ -272,15 +263,15 @@ slide_on_ceiling = false
 script = ExtResource("18_x3xnh")
 enemy_health = 2
 
-[node name="Timer2" type="Timer" parent="Enemy" unique_id=1833584203]
+[node name="Spawn_Timer" type="Timer" parent="Enemy" unique_id=1833584203]
 wait_time = 1.45
 autostart = true
 
 [node name="Enemy_Lava" parent="." unique_id=1905237066 instance=ExtResource("21_vvhu1")]
-position = Vector2(-22, -11)
+position = Vector2(-12, -27)
 script = ExtResource("22_raj38")
 
-[node name="Timer2" type="Timer" parent="Enemy_Lava" unique_id=384944045]
+[node name="Lava_Timer" type="Timer" parent="Enemy_Lava" unique_id=384944045]
 wait_time = 1.44
 autostart = true
 
@@ -288,7 +279,7 @@ autostart = true
 position = Vector2(-204, 155)
 script = ExtResource("24_raj38")
 
-[node name="Timer" type="Timer" parent="Lava" unique_id=1532479186]
+[node name="Lava_Despawn" type="Timer" parent="Lava" unique_id=1532479186]
 wait_time = 0.097
 autostart = true
 
@@ -301,6 +292,6 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer2/MainMenu/MonsterEncyclopedia" to="CanvasLayer2/MainMenu/MonsterEncyclopedia" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MainMenu/Quit" to="CanvasLayer2/MainMenu/Quit" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" to="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" method="_on_pressed"]
-[connection signal="timeout" from="Enemy/Timer2" to="Enemy" method="_on_timer_2_timeout"]
-[connection signal="timeout" from="Enemy_Lava/Timer2" to="Enemy_Lava" method="_on_timer_2_timeout"]
-[connection signal="timeout" from="Lava/Timer" to="Lava" method="_on_timer_timeout"]
+[connection signal="timeout" from="Enemy/Spawn_Timer" to="Enemy" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Enemy_Lava/Lava_Timer" to="Enemy_Lava" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Lava/Lava_Despawn" to="Lava" method="_on_timer_timeout"]

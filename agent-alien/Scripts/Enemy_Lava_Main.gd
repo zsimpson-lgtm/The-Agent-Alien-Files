@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		position += direction * speed * delta
+
 func choose_random_direction() -> void:
 	if randf() < 0.5:
 		direction = Vector2.LEFT
@@ -21,7 +22,6 @@ func choose_random_direction() -> void:
 		direction = Vector2.RIGHT
 
 	move_and_slide()
-
 
 func _on_timer_2_timeout() -> void:
 	choose_random_direction()

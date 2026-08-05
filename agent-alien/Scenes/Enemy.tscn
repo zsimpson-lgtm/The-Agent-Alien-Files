@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://cxncghnh3v6y0"]
 
 [ext_resource type="Script" uid="uid://f3oattni62r0" path="res://Scripts/Enemy.gd" id="1_hghv2"]
-[ext_resource type="Texture2D" uid="uid://67koft7xj70o" path="res://Assets/roll0000.png" id="2_idouy"]
-[ext_resource type="Texture2D" uid="uid://bsg4t64sregmg" path="res://Assets/roll0001.png" id="3_0o0ue"]
-[ext_resource type="Texture2D" uid="uid://jxh6lgmbhyn2" path="res://Assets/roll0002.png" id="4_6s1gy"]
-[ext_resource type="Texture2D" uid="uid://dgy7etwlima0" path="res://Assets/roll0003.png" id="5_uihya"]
-[ext_resource type="Texture2D" uid="uid://be1u3i1jaebds" path="res://Assets/roll0004.png" id="6_27ry8"]
-[ext_resource type="Texture2D" uid="uid://cxrw7ntj7agel" path="res://Assets/roll0005.png" id="7_esfq3"]
-[ext_resource type="Texture2D" uid="uid://bfkf4kw1hsu7c" path="res://Assets/roll0006.png" id="8_qlal6"]
-[ext_resource type="Texture2D" uid="uid://de2r5ochsq0ji" path="res://Assets/roll0007.png" id="9_dascy"]
+[ext_resource type="Texture2D" uid="uid://67koft7xj70o" path="res://Assets/Enemy Animations/Ball/roll0000.png" id="2_idouy"]
+[ext_resource type="Texture2D" uid="uid://bsg4t64sregmg" path="res://Assets/Enemy Animations/Ball/roll0001.png" id="3_0o0ue"]
+[ext_resource type="Texture2D" uid="uid://jxh6lgmbhyn2" path="res://Assets/Enemy Animations/Ball/roll0002.png" id="4_6s1gy"]
+[ext_resource type="Texture2D" uid="uid://dgy7etwlima0" path="res://Assets/Enemy Animations/Ball/roll0003.png" id="5_uihya"]
+[ext_resource type="Texture2D" uid="uid://be1u3i1jaebds" path="res://Assets/Enemy Animations/Ball/roll0004.png" id="6_27ry8"]
+[ext_resource type="Texture2D" uid="uid://cxrw7ntj7agel" path="res://Assets/Enemy Animations/Ball/roll0005.png" id="7_esfq3"]
+[ext_resource type="Texture2D" uid="uid://bfkf4kw1hsu7c" path="res://Assets/Enemy Animations/Ball/roll0006.png" id="8_qlal6"]
+[ext_resource type="Texture2D" uid="uid://de2r5ochsq0ji" path="res://Assets/Enemy Animations/Ball/roll0007.png" id="9_dascy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idouy"]
 radius = 29.537361
@@ -48,32 +48,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="da" type="CharacterBody2D" unique_id=428399118 groups=["Enemy", "enemy"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=428399118 groups=["Enemy", "enemy"]]
 texture_filter = 1
 script = ExtResource("1_hghv2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1810061324 groups=["Enemy"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1587970002]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1587970002 groups=["Enemy"]]
 position = Vector2(0.50000095, -6.4999995)
 scale = Vector2(1, 1.01)
 shape = SubResource("CircleShape2D_idouy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779349581]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779349581 groups=["Enemy"]]
 position = Vector2(1, -6)
 shape = SubResource("CircleShape2D_0o0ue")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=11175689]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=11175689 groups=["Enemy"]]
 position = Vector2(1, -6.0000005)
 scale = Vector2(0.0899471, 0.093474425)
 sprite_frames = SubResource("SpriteFrames_rm7px")
 autoplay = "default"
 frame_progress = 0.67444056
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=350956009]
-visible = false
-position = Vector2(5.551115e-17, -7.0000005)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_idouy")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
