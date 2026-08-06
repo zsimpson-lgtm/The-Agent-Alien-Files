@@ -6,6 +6,7 @@
 size = Vector2(38.5, 11)
 
 [node name="Node2D" type="Node2D" unique_id=139077602]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1938098709]
 script = ExtResource("1_06q7x")

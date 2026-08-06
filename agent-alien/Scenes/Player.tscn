@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://nlnouaeystk8"]
 
 [ext_resource type="Script" uid="uid://b7gruql1r2jvy" path="res://Scripts/Player.gd" id="1_rpqav"]
-[ext_resource type="Texture2D" uid="uid://4bjbj8vdaav1" path="res://Assets/Player Animations/Attack Animation/beam0000.png" id="3_utwlt"]
-[ext_resource type="Texture2D" uid="uid://cvp0p4gmj7ko6" path="res://Assets/Player Animations/Attack Animation/beam0001.png" id="4_kih0c"]
-[ext_resource type="Texture2D" uid="uid://dsir5ji1xvjbb" path="res://Assets/Player Animations/Attack Animation/beam0002.png" id="5_lyrkg"]
-[ext_resource type="Texture2D" uid="uid://c1s23mdie2bv" path="res://Assets/Player Animations/Attack Animation/beam0003.png" id="6_c43xd"]
-[ext_resource type="Texture2D" uid="uid://bt67fdd2ixisk" path="res://Assets/Player Animations/Attack Animation/beam0004.png" id="7_avx33"]
 [ext_resource type="Texture2D" uid="uid://cj3jqu2q5fjuj" path="res://Assets/Player Animations/Attack Animation/beam0005.png" id="8_rxg2u"]
 [ext_resource type="Texture2D" uid="uid://b8lii6qmxsedi" path="res://Assets/Player Animations/Idle Animation/Idle0000.png" id="15_ulo2v"]
 [ext_resource type="Texture2D" uid="uid://dydbpqtmh0rum" path="res://Assets/Player Animations/Idle Animation/Idle0001.png" id="16_1iu4k"]
@@ -23,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dkc3vemhei1lo" path="res://Assets/Player Animations/Attack Animation/beam0025.png" id="28_u4y2r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbkls"]
-size = Vector2(16.545456, 16.545454)
+size = Vector2(26, 16.90909)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
 size = Vector2(14.4776125, 15.447762)
@@ -32,30 +27,15 @@ size = Vector2(14.4776125, 15.447762)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_utwlt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kih0c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_lyrkg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_c43xd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_avx33")
-}, {
-"duration": 1.0,
 "texture": ExtResource("8_rxg2u")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("23_v5fqo")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("24_yf17c")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("25_awd2i")
 }, {
 "duration": 1.0,
@@ -66,9 +46,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("28_u4y2r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_utwlt")
 }],
 "loop": false,
 "name": &"Attack",
@@ -110,7 +87,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5v66d"]
-size = Vector2(19.253733, 2.089552)
+size = Vector2(19.253733, 14.179106)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_arntx"]
+radius = 21.0
+height = 42.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1100361338 groups=["Player", "player"]]
 texture_filter = 1
@@ -118,7 +99,7 @@ script = ExtResource("1_rpqav")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1565923269]
 texture_filter = 1
-position = Vector2(-13.5, -5.499998)
+position = Vector2(12.499996, -6.499997)
 scale = Vector2(5.5, 5.5)
 shape = SubResource("RectangleShape2D_qbkls")
 
@@ -135,14 +116,18 @@ scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_yoq75")
 animation = &"Attack"
 autoplay = "Idle"
-frame = 6
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1393515011 groups=["Player", "player"]]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=4499900]
-position = Vector2(149.5, -16)
+position = Vector2(149.5, -7.499998)
 scale = Vector2(6.7, 6.7)
 shape = SubResource("RectangleShape2D_5v66d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1242600883]
+visible = false
+position = Vector2(-15, -42)
+shape = SubResource("CapsuleShape2D_arntx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

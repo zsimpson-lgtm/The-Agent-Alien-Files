@@ -258,7 +258,7 @@ script = ExtResource("17_x3xnh")
 
 [node name="Enemy" parent="." unique_id=207699790 instance=ExtResource("2_gl6un")]
 visible = false
-position = Vector2(190, -155)
+position = Vector2(1191, -22)
 slide_on_ceiling = false
 script = ExtResource("18_x3xnh")
 enemy_health = 2
@@ -268,6 +268,7 @@ wait_time = 1.45
 autostart = true
 
 [node name="Enemy_Lava" parent="." unique_id=1905237066 instance=ExtResource("21_vvhu1")]
+visible = false
 position = Vector2(-12, -27)
 script = ExtResource("22_raj38")
 
@@ -276,6 +277,7 @@ wait_time = 1.44
 autostart = true
 
 [node name="Lava" parent="." unique_id=139077602 instance=ExtResource("22_lbihj")]
+visible = false
 position = Vector2(-204, 155)
 script = ExtResource("24_raj38")
 

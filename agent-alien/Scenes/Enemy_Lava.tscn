@@ -24,6 +24,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=536436477 groups=["Lava"]]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1529991220 groups=["Enemy"]]
 
