@@ -9,9 +9,9 @@ var attack_frames
 var body
 @onready var player = get_parent().get_node("Player")
 @onready var enemy = get_parent().get_node("Enemy")
-@onready var player_attack = player.get_node("AnimatedSprite2D")
+@onready var player_attack = player.get_node("Node2D/AnimatedSprite2D")
 var in_range: bool = false
-@onready var attack_area = player.get_node("Area2D2")
+@onready var attack_area = player.get_node("Node2D/Area2D2")
 
 func _ready() -> void:
 	pass
@@ -25,14 +25,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta):
-	if player_attack.animation == "Attack" and player_attack.frame == 1:
-		attack_area.monitoring = player_attack.frame in [1, 2, 3]
+	if player_attack.animation == "Attack" and player_attack.frame in [1, 2, 3]:
+		attack_area.monitoring = true 
 	else:
 		attack_area.monitoring = false
 
-
 func _on_area_2d_area_entered(body: Area2D) -> void:
-	if body.is_in_group("Player") and player_attack.animation == "Attack":
+	if body.is_in_group("Player") and player_attack.animation == "Attack" and player_attack.frame in [1, 2, 3]:
 		take_damage()
 
 func take_damage() -> void:

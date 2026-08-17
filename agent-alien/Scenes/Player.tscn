@@ -18,10 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://dkc3vemhei1lo" path="res://Assets/Player Animations/Attack Animation/beam0025.png" id="28_u4y2r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbkls"]
-size = Vector2(26, 16.90909)
+size = Vector2(25.090908, 16.90909)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
-size = Vector2(14.4776125, 15.447762)
+size = Vector2(21.641792, 15.522389)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v66d"]
+size = Vector2(23.917915, 4.179105)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yoq75"]
 animations = [{
@@ -29,13 +32,13 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_rxg2u")
 }, {
-"duration": 2.0,
+"duration": 2.5,
 "texture": ExtResource("23_v5fqo")
 }, {
-"duration": 2.0,
+"duration": 2.5,
 "texture": ExtResource("24_yf17c")
 }, {
-"duration": 2.0,
+"duration": 2.5,
 "texture": ExtResource("25_awd2i")
 }, {
 "duration": 1.0,
@@ -44,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_3rw25")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": ExtResource("28_u4y2r")
 }],
 "loop": false,
@@ -86,48 +89,46 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v66d"]
-size = Vector2(19.253733, 14.179106)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_arntx"]
-radius = 21.0
-height = 42.0
-
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1100361338 groups=["Player", "player"]]
 texture_filter = 1
+position = Vector2(-11, 1)
 script = ExtResource("1_rpqav")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1565923269]
 texture_filter = 1
-position = Vector2(12.499996, -6.499997)
+position = Vector2(9.999997, -6.499997)
 scale = Vector2(5.5, 5.5)
 shape = SubResource("RectangleShape2D_qbkls")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1387916537 groups=["Player", "player"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=1387916537 groups=["player"]]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=882496144]
-position = Vector2(-13.499996, -6.75)
+position = Vector2(10.500004, -7.0000033)
 scale = Vector2(6.7, 6.7)
 shape = SubResource("RectangleShape2D_rpqav")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=367247104]
-position = Vector2(-12, -13)
+[node name="Node2D" type="Node2D" parent="." unique_id=2124907291]
+
+[node name="Area2D2" type="Area2D" parent="Node2D" unique_id=1393515011 groups=["Player", "player"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Area2D2" unique_id=4499900]
+position = Vector2(143.875, -15.000003)
+rotation = 3.1415925
+scale = Vector2(6.7, -6.7)
+shape = SubResource("RectangleShape2D_5v66d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=367247104]
+position = Vector2(11.999998, -13)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_yoq75")
 animation = &"Attack"
 autoplay = "Idle"
+frame = 1
 
-[node name="Area2D2" type="Area2D" parent="." unique_id=1393515011 groups=["Player", "player"]]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=4499900]
-position = Vector2(149.5, -7.499998)
-scale = Vector2(6.7, 6.7)
-shape = SubResource("RectangleShape2D_5v66d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1242600883]
-visible = false
-position = Vector2(-15, -42)
-shape = SubResource("CapsuleShape2D_arntx")
+[node name="Timer" type="Timer" parent="." unique_id=1488192704]
+wait_time = 0.436
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="Node2D/Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

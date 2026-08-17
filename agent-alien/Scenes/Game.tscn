@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/Pause_Menu_Play.gd" id="9_bf53h"]
 [ext_resource type="Script" uid="uid://b7lfti04dej0k" path="res://Scripts/Pause_Menu_Restart.gd" id="10_71axn"]
 [ext_resource type="Script" uid="uid://bl0x3v6xioebp" path="res://Scripts/Pause_Menu_Menu.gd" id="11_dahhg"]
-[ext_resource type="Texture2D" uid="uid://f4lvd2oxpl44" path="res://Assets/UI/MainMenu.png" id="12_3so38"]
+[ext_resource type="Texture2D" uid="uid://bty3iv6sdqjim" path="res://Assets/7.png" id="11_lbihj"]
 [ext_resource type="Script" uid="uid://c751ok6jx0kk" path="res://Scripts/Play_Main_Menu.gd" id="13_3cx6b"]
 [ext_resource type="Script" uid="uid://dfvw3o0odyapk" path="res://Scripts/Quit.gd" id="14_8r6kd"]
 [ext_resource type="Script" uid="uid://c7k15ck58duvr" path="res://Scripts/Encyclopedia.gd" id="14_acvyw"]
@@ -209,34 +209,37 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_3cx6b")
 script = ExtResource("11_dahhg")
 
 [node name="MainMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=1656267372]
-position = Vector2(572, 321)
-scale = Vector2(0.19227444, 0.19044577)
-texture = ExtResource("12_3so38")
+position = Vector2(557, 330.57965)
+scale = Vector2(0.6260417, 0.6044822)
+texture = ExtResource("11_lbihj")
 
 [node name="PlayMainMenu" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1080997465]
 process_mode = 3
-offset_left = -754.1304
-offset_top = 78.76258
-offset_right = 858.14844
-offset_bottom = 372.80945
+offset_left = -154.94174
+offset_top = 32.127274
+offset_right = 1457.337
+offset_bottom = 326.17413
+scale = Vector2(0.19526586, 0.3199594)
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxwew")
 script = ExtResource("13_3cx6b")
 
 [node name="MonsterEncyclopedia" type="Button" parent="CanvasLayer2/MainMenu" unique_id=257785428]
 process_mode = 3
-offset_left = 1300.225
-offset_top = 1407.225
-offset_right = 2912.504
-offset_bottom = 1575.2516
+offset_left = 421.69714
+offset_top = 452.32162
+offset_right = 2033.9761
+offset_bottom = 620.34827
+scale = Vector2(0.31302112, 0.27210426)
 theme_override_styles/normal = SubResource("StyleBoxFlat_acvyw")
 script = ExtResource("14_acvyw")
 
 [node name="Quit" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1784588953]
 process_mode = 3
-offset_left = -280.8485
-offset_top = 1039.666
-offset_right = 405.67004
-offset_bottom = 1281.2046
+offset_left = -867.3543
+offset_top = 406.00092
+offset_right = -180.83575
+offset_bottom = 647.5395
+scale = Vector2(0.32138214, 0.33928958)
 theme_override_styles/normal = SubResource("StyleBoxFlat_8r6kd")
 script = ExtResource("14_8r6kd")
 
@@ -268,7 +271,6 @@ wait_time = 1.45
 autostart = true
 
 [node name="Enemy_Lava" parent="." unique_id=1905237066 instance=ExtResource("21_vvhu1")]
-visible = false
 position = Vector2(-12, -27)
 script = ExtResource("22_raj38")
 
@@ -277,7 +279,6 @@ wait_time = 1.44
 autostart = true
 
 [node name="Lava" parent="." unique_id=139077602 instance=ExtResource("22_lbihj")]
-visible = false
 position = Vector2(-204, 155)
 script = ExtResource("24_raj38")
 
