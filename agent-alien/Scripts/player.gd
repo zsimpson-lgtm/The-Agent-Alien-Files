@@ -5,11 +5,13 @@ const JUMP_VELOCITY = -400.0
 var gravity: = 980
 var health: int = 100
 var player 
+var touching_enemy
+var player_attack
+var can_attack: bool = true
+var is_attacking
 @export var health_ui: TextureProgressBar
 @export var regen_amount: int = 5
 @onready var anim_player: AnimatedSprite2D = $AnimatedSprite2D
-var touching_enemy
-var player_attack
 
 func _ready() -> void:
 	health_ui.max_value = health
@@ -32,32 +34,29 @@ func _process(delta: float) -> void:
 	else:
 		$Node2D.scale.x = 1
 
-
-	if Input.is_action_pressed("attack") and $Node2D/AnimatedSprite2D.frame in [0,6]:
+	if Input.is_action_pressed("attack") and $Attack_Timer.is_stopped():
 		$Node2D/AnimatedSprite2D.play("Attack")
-	
+		$Attack_Timer.start()
+		velocity.x = 0
 
 
-	elif direction and Input.is_action_pressed("walk") and  $Node2D/AnimatedSprite2D.animation != "Attack":
+	elif direction:
 		velocity.x = direction * SPEED
 		$Node2D/AnimatedSprite2D.play("Walk")
-		
 
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$Node2D/AnimatedSprite2D.play("Idle")
-		
-	#if touching_enemy:
-		#$Timer.start()
-		#
+	
+	
 
 	move_and_slide()
 
-
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-		if body.is_in_group("Enemy"):
-			$Timer.start()
-			
+	var enemy = get_tree().get_first_node_in_group("Enemy")
+	if body.is_in_group("Enemy"):
+		$Damage_Timer.start()
+
 func _on_play_pressed() -> void:
 	get_tree().paused = false
 
@@ -67,12 +66,12 @@ func _on_regen_timer_timeout() -> void:
 
 func _on_area_2d_2_area_entered(area: Area2D) -> void:
 	var enemy = get_tree().get_first_node_in_group("Enemy")
-	
+
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
-		$Timer.stop()			
+		$Damage_Timer.stop()			
 
-func _on_timer_timeout() -> void:
+func _on_damage_timer_timeout() -> void:
 	take_damage()
 
 func take_damage() -> void:
@@ -82,3 +81,7 @@ func take_damage() -> void:
 		print("hi")
 	else:
 		get_tree().call_deferred("reload_current_scene")
+
+#func _on_attack_timer_timeout() -> void:
+	#can_attack = true
+	#is_attacking = false

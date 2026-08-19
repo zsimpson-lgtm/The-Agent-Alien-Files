@@ -123,12 +123,16 @@ scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_yoq75")
 animation = &"Attack"
 autoplay = "Idle"
-frame = 1
 
-[node name="Timer" type="Timer" parent="." unique_id=1488192704]
+[node name="Damage_Timer" type="Timer" parent="." unique_id=1488192704]
 wait_time = 0.436
+
+[node name="Attack_Timer" type="Timer" parent="." unique_id=529492459]
+wait_time = 2.066
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="area_entered" from="Node2D/Area2D2" to="." method="_on_area_2d_2_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Damage_Timer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]
