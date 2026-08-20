@@ -128,7 +128,7 @@ autoplay = "Idle"
 wait_time = 0.436
 
 [node name="Attack_Timer" type="Timer" parent="." unique_id=529492459]
-wait_time = 2.066
+wait_time = 0.811
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

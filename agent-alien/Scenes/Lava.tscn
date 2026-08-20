@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://pw4jjl7t338" path="res://Scripts/Lava.gd" id="1_06q7x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rhe2"]
-size = Vector2(38.5, 11)
-
 [node name="Node2D" type="Node2D" unique_id=139077602]
 visible = false
 
@@ -13,7 +10,6 @@ script = ExtResource("1_06q7x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1195593761]
 position = Vector2(-32, -5)
-shape = SubResource("RectangleShape2D_8rhe2")
 
 [node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=1051783266]
 offset_left = -51.0

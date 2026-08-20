@@ -7,7 +7,7 @@ var speed: int = 250.0
 
 func _on_timer_2_timeout() -> void:
 	spawn = spawner.instantiate()
-	spawn.position = Vector2(190, -155.0)
+	spawn.position = Vector2(190, -15)
 	get_parent().add_child(spawn)
 
 	move_and_slide()

@@ -271,7 +271,8 @@ wait_time = 1.45
 autostart = true
 
 [node name="Enemy_Lava" parent="." unique_id=1905237066 instance=ExtResource("21_vvhu1")]
-position = Vector2(-12, -27)
+visible = true
+position = Vector2(-427, 365)
 script = ExtResource("22_raj38")
 
 [node name="Lava_Timer" type="Timer" parent="Enemy_Lava" unique_id=384944045]

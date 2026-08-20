@@ -11,7 +11,7 @@ var can_attack: bool = true
 var is_attacking
 @export var health_ui: TextureProgressBar
 @export var regen_amount: int = 5
-@onready var anim_player: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim_player: AnimatedSprite2D = $Node2D/AnimatedSprite2D
 
 func _ready() -> void:
 	health_ui.max_value = health
@@ -27,30 +27,38 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("jump") and is_on_floor() :
 		velocity.y = JUMP_VELOCITY
 
-	var direction : = Input.get_axis("left", "right")
+	var direction := Input.get_axis("left", "right")
 
-	if Input.is_action_pressed("left"):
-		$Node2D.scale.x = -1
-	else:
-		$Node2D.scale.x = 1
-
-	if Input.is_action_pressed("attack") and $Attack_Timer.is_stopped():
-		$Node2D/AnimatedSprite2D.play("Attack")
-		$Attack_Timer.start()
-		velocity.x = 0
-
-
-	elif direction:
+	if direction:
 		velocity.x = direction * SPEED
-		$Node2D/AnimatedSprite2D.play("Walk")
-
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		$Node2D/AnimatedSprite2D.play("Idle")
-	
-	
+	if Input.is_action_just_pressed("attack") and can_attack:
+		is_attacking = true
+		can_attack = false
+		$Node2D/AnimatedSprite2D.play("Attack")
+		$Attack_Timer.start()
 
+
+	if Input.is_action_pressed("left"):
+		$Node2D/AnimatedSprite2D.play("Walk")
+		$Node2D.scale.x = -1
+
+	elif Input.is_action_pressed("right"):
+		$Node2D/AnimatedSprite2D.play("Walk")
+		$Node2D.scale.x = 1
+
+	else:
+		$Node2D/AnimatedSprite2D.play("Idle")
+
+
+			
+		
+
+		
 	move_and_slide()
+	
+	
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	var enemy = get_tree().get_first_node_in_group("Enemy")
@@ -82,6 +90,6 @@ func take_damage() -> void:
 	else:
 		get_tree().call_deferred("reload_current_scene")
 
-#func _on_attack_timer_timeout() -> void:
-	#can_attack = true
-	#is_attacking = false
+func _on_attack_timer_timeout() -> void:
+	can_attack = true
+	is_attacking = false
