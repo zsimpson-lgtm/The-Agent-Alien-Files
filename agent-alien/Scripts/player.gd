@@ -39,17 +39,17 @@ func _process(delta: float) -> void:
 		$Node2D/AnimatedSprite2D.play("Attack")
 		$Attack_Timer.start()
 
+	elif not is_attacking:
+		if Input.is_action_pressed("left"):
+			$Node2D/AnimatedSprite2D.play("Walk")
+			$Node2D.scale.x = -1
 
-	if Input.is_action_pressed("left"):
-		$Node2D/AnimatedSprite2D.play("Walk")
-		$Node2D.scale.x = -1
+		elif Input.is_action_pressed("right"):
+			$Node2D/AnimatedSprite2D.play("Walk")
+			$Node2D.scale.x = 1
 
-	elif Input.is_action_pressed("right"):
-		$Node2D/AnimatedSprite2D.play("Walk")
-		$Node2D.scale.x = 1
-
-	else:
-		$Node2D/AnimatedSprite2D.play("Idle")
+		else:
+			$Node2D/AnimatedSprite2D.play("Idle")
 
 
 			

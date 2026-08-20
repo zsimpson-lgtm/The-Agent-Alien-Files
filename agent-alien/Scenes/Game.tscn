@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b7nvuhvekrcca"]
 
 [ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/Player.tscn" id="1_gl6un"]
-[ext_resource type="PackedScene" uid="uid://cxncghnh3v6y0" path="res://Scenes/Enemy.tscn" id="2_gl6un"]
 [ext_resource type="Texture2D" uid="uid://bc6whkwhkh3lv" path="res://Assets/UI/Backdrop.png" id="3_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/UI/Healthbar_Empty.png" id="4_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://1pesxjxisd1p" path="res://Assets/UI/Healthbar_Full.png" id="5_7lihs"]
@@ -259,17 +258,6 @@ scale = Vector2(0.0658434, 0.067151755)
 texture_normal = ExtResource("16_4q8tf")
 script = ExtResource("17_x3xnh")
 
-[node name="Enemy" parent="." unique_id=207699790 instance=ExtResource("2_gl6un")]
-visible = false
-position = Vector2(1191, -22)
-slide_on_ceiling = false
-script = ExtResource("18_x3xnh")
-enemy_health = 2
-
-[node name="Spawn_Timer" type="Timer" parent="Enemy" unique_id=1833584203]
-wait_time = 1.45
-autostart = true
-
 [node name="Enemy_Lava" parent="." unique_id=1905237066 instance=ExtResource("21_vvhu1")]
 visible = true
 position = Vector2(-427, 365)
@@ -287,6 +275,13 @@ script = ExtResource("24_raj38")
 wait_time = 0.097
 autostart = true
 
+[node name="Node2D" type="Node2D" parent="." unique_id=1177315260]
+script = ExtResource("18_x3xnh")
+
+[node name="Spawn_Timer" type="Timer" parent="Node2D" unique_id=1833584203]
+wait_time = 1.45
+autostart = true
+
 [connection signal="timeout" from="CanvasLayer/TextureProgressBar/RegenTimer" to="Player" method="_on_regen_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/PlayPauseMenu" to="CanvasLayer2/PauseMenu/PlayPauseMenu" method="_on_pressed"]
@@ -296,6 +291,6 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer2/MainMenu/MonsterEncyclopedia" to="CanvasLayer2/MainMenu/MonsterEncyclopedia" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MainMenu/Quit" to="CanvasLayer2/MainMenu/Quit" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" to="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" method="_on_pressed"]
-[connection signal="timeout" from="Enemy/Spawn_Timer" to="Enemy" method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Enemy_Lava/Lava_Timer" to="Enemy_Lava" method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Lava/Lava_Despawn" to="Lava" method="_on_timer_timeout"]
+[connection signal="timeout" from="Node2D/Spawn_Timer" to="Node2D" method="_on_spawn_timer_timeout"]

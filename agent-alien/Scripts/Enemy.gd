@@ -9,7 +9,7 @@ var attack_frames
 var body
 @onready var player = get_parent().get_node("Player")
 @onready var enemy = get_parent().get_node("Enemy")
-@onready var player_attack = player.get_node("Node2D/AnimatedSprite2D")
+@onready var player_attack: AnimatedSprite2D = get_tree().root.get_node("Node2D/Player/Node2D/AnimatedSprite2D")
 var in_range: bool = false
 @onready var attack_area = player.get_node("Node2D/Area2D2")
 
