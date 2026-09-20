@@ -17,15 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://hyr7j7fgwuli" path="res://Assets/Player Animations/Attack Animation/beam0024.png" id="27_3rw25"]
 [ext_resource type="Texture2D" uid="uid://dkc3vemhei1lo" path="res://Assets/Player Animations/Attack Animation/beam0025.png" id="28_u4y2r"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbkls"]
-size = Vector2(25.090908, 16.90909)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
-size = Vector2(21.641792, 15.522389)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v66d"]
-size = Vector2(23.917915, 4.179105)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_yoq75"]
 animations = [{
 "frames": [{
@@ -89,10 +80,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbkls"]
+size = Vector2(25.090908, 16.90909)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
+size = Vector2(21.641792, 15.522389)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v66d"]
+size = Vector2(18.973883, 9.55224)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1100361338 groups=["Player", "player"]]
 texture_filter = 1
 position = Vector2(-11, 1)
 script = ExtResource("1_rpqav")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=367247104]
+position = Vector2(11.999998, -13)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_yoq75")
+animation = &"Attack"
+autoplay = "Idle"
+frame_progress = 0.5047459
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1565923269]
 texture_filter = 1
@@ -108,22 +116,15 @@ scale = Vector2(6.7, 6.7)
 shape = SubResource("RectangleShape2D_rpqav")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=2124907291]
+position = Vector2(27, -18)
 
 [node name="Area2D2" type="Area2D" parent="Node2D" unique_id=1393515011 groups=["Player", "player"]]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Area2D2" unique_id=4499900]
-position = Vector2(143.875, -15.000003)
+position = Vector2(-16.5625, 18.000008)
 rotation = 3.1415925
 scale = Vector2(6.7, -6.7)
 shape = SubResource("RectangleShape2D_5v66d")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=367247104]
-position = Vector2(11.999998, -13)
-scale = Vector2(3.5, 3.5)
-sprite_frames = SubResource("SpriteFrames_yoq75")
-animation = &"Attack"
-autoplay = "Idle"
-frame_progress = 0.13687417
 
 [node name="Damage_Timer" type="Timer" parent="." unique_id=1488192704]
 wait_time = 0.436

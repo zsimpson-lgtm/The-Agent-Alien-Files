@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b7nvuhvekrcca"]
 
 [ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/Player.tscn" id="1_gl6un"]
-[ext_resource type="Texture2D" uid="uid://bc6whkwhkh3lv" path="res://Assets/UI/Backdrop.png" id="3_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/UI/Healthbar_Empty.png" id="4_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://1pesxjxisd1p" path="res://Assets/UI/Healthbar_Full.png" id="5_7lihs"]
 [ext_resource type="Texture2D" uid="uid://0nx088tsqabq" path="res://Assets/UI/Pause.png" id="6_7lihs"]
@@ -14,12 +13,8 @@
 [ext_resource type="Script" uid="uid://c751ok6jx0kk" path="res://Scripts/Play_Main_Menu.gd" id="13_3cx6b"]
 [ext_resource type="Script" uid="uid://dfvw3o0odyapk" path="res://Scripts/Quit.gd" id="14_8r6kd"]
 [ext_resource type="Script" uid="uid://1d5mrsomqn0n" path="res://Scripts/Enemy_Main.gd" id="18_x3xnh"]
-[ext_resource type="PackedScene" uid="uid://cfm2bxytmk1mw" path="res://Scenes/Enemy_Lava.tscn" id="21_vvhu1"]
-[ext_resource type="PackedScene" uid="uid://8hvo8nw7j7ro" path="res://Scenes/Lava.tscn" id="22_lbihj"]
-[ext_resource type="Script" uid="uid://der7olvy8qtoa" path="res://Scripts/Enemy_Lava_Main.gd" id="22_raj38"]
 [ext_resource type="Texture2D" uid="uid://bvtm3wow4cmq6" path="res://Assets/backgriouhd.png" id="23_lbihj"]
 [ext_resource type="Texture2D" uid="uid://bowx0kdwvx6r3" path="res://Assets/floor.png" id="24_8e0uq"]
-[ext_resource type="Script" uid="uid://pw4jjl7t338" path="res://Scripts/Lava.gd" id="24_raj38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
@@ -114,6 +109,7 @@ autostart = true
 [node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("health_ui") instance=ExtResource("1_gl6un")]
 position = Vector2(-120, -34)
 health_ui = NodePath("../CanvasLayer/TextureProgressBar")
+regen_amount = null
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=665921378]
 position = Vector2(0, 1)
@@ -126,13 +122,6 @@ position = Vector2(-84, 84)
 position = Vector2(15.5, 76.5)
 scale = Vector2(-20, 1)
 shape = SubResource("RectangleShape2D_iukft")
-
-[node name="Background" type="Sprite2D" parent="." unique_id=607886359]
-visible = false
-z_index = -14
-position = Vector2(337.49976, -2042.75)
-scale = Vector2(26.575888, 14.5606985)
-texture = ExtResource("3_j5yw3")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1662910130]
 
@@ -210,37 +199,12 @@ scale = Vector2(0.32138214, 0.33928958)
 theme_override_styles/normal = SubResource("StyleBoxFlat_8r6kd")
 script = ExtResource("14_8r6kd")
 
-[node name="Enemy_Lava" parent="." unique_id=1905237066 instance=ExtResource("21_vvhu1")]
-visible = true
-position = Vector2(-427, 365)
-script = ExtResource("22_raj38")
-
-[node name="Lava_Timer" type="Timer" parent="Enemy_Lava" unique_id=384944045]
-wait_time = 1.44
-autostart = true
-
-[node name="Lava" parent="." unique_id=139077602 instance=ExtResource("22_lbihj")]
-position = Vector2(-204, 155)
-script = ExtResource("24_raj38")
-
-[node name="Lava_Despawn" type="Timer" parent="Lava" unique_id=1532479186]
-wait_time = 0.097
-autostart = true
-
 [node name="Node2D" type="Node2D" parent="." unique_id=1177315260]
 script = ExtResource("18_x3xnh")
 
 [node name="Spawn_Timer" type="Timer" parent="Node2D" unique_id=1833584203]
 wait_time = 1.45
 autostart = true
-
-[node name="Backgriouhd" type="Sprite2D" parent="." unique_id=1090058624]
-z_index = 1
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(-439, -1363)
-scale = Vector2(9.2421875, 4.296875)
-texture = ExtResource("23_lbihj")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1626153838]
 z_index = -1
@@ -266,6 +230,4 @@ texture = ExtResource("24_8e0uq")
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Menu" to="CanvasLayer2/PauseMenu/Menu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MainMenu/PlayMainMenu" to="CanvasLayer2/MainMenu/PlayMainMenu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MainMenu/Quit" to="CanvasLayer2/MainMenu/Quit" method="_on_pressed"]
-[connection signal="timeout" from="Enemy_Lava/Lava_Timer" to="Enemy_Lava" method="_on_timer_2_timeout"]
-[connection signal="timeout" from="Lava/Lava_Despawn" to="Lava" method="_on_timer_timeout"]
 [connection signal="timeout" from="Node2D/Spawn_Timer" to="Node2D" method="_on_spawn_timer_timeout"]

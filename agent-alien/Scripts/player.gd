@@ -33,23 +33,27 @@ func _process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
 	if Input.is_action_just_pressed("attack") and can_attack:
 		is_attacking = true
 		can_attack = false
-		$Node2D/AnimatedSprite2D.play("Attack")
+		$AnimatedSprite2D.play("Attack")
 		$Attack_Timer.start()
 
 	elif not is_attacking:
 		if Input.is_action_pressed("left"):
-			$Node2D/AnimatedSprite2D.play("Walk")
-			$Node2D.scale.x = -1
+			$AnimatedSprite2D.play("Walk")
+			$Node2D.position.x = -130
+			$AnimatedSprite2D.scale.x = -3.5
 
 		elif Input.is_action_pressed("right"):
-			$Node2D/AnimatedSprite2D.play("Walk")
-			$Node2D.scale.x = 1
+			$AnimatedSprite2D.play("Walk")
+			$Node2D.position.x = 190
+			$AnimatedSprite2D.scale.x = 3.5
+			
 
 		else:
-			$Node2D/AnimatedSprite2D.play("Idle")
+			$AnimatedSprite2D.play("Idle")
 
 
 			
@@ -72,9 +76,6 @@ func _on_regen_timer_timeout() -> void:
 	if health < 100:
 		health_ui.value += regen_amount
 
-func _on_area_2d_2_area_entered(area: Area2D) -> void:
-	var enemy = get_tree().get_first_node_in_group("Enemy")
-
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		$Damage_Timer.stop()			
@@ -84,7 +85,7 @@ func _on_damage_timer_timeout() -> void:
 
 func take_damage() -> void:
 	if health > 1:
-		health -= 15
+		health -= 10
 		health_ui.value = health
 		print("hi")
 	else:

@@ -11,7 +11,7 @@ var body
 var in_range: bool = false
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var attack_area: Area2D = player.get_node("Node2D/Area2D2")
-@onready var player_attack: AnimatedSprite2D = player.get_node("Node2D/AnimatedSprite2D")
+@onready var player_attack: AnimatedSprite2D = player.get_node("AnimatedSprite2D")
 
 
 func _ready() -> void:
