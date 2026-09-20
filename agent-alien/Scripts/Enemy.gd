@@ -7,11 +7,12 @@ var spawn
 @onready var spawner: PackedScene = preload("res://Scenes/Enemy.tscn")
 var attack_frames 
 var body
-@onready var player = get_parent().get_node("Player")
 @onready var enemy = get_parent().get_node("Enemy")
-@onready var player_attack: AnimatedSprite2D = get_tree().root.get_node("Node2D/Player/Node2D/AnimatedSprite2D")
 var in_range: bool = false
-@onready var attack_area = player.get_node("Node2D/Area2D2")
+@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var attack_area: Area2D = player.get_node("Node2D/Area2D2")
+@onready var player_attack: AnimatedSprite2D = player.get_node("Node2D/AnimatedSprite2D")
+
 
 func _ready() -> void:
 	pass

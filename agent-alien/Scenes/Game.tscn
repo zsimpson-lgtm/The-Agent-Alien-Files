@@ -10,17 +10,15 @@
 [ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/Pause_Menu_Play.gd" id="9_bf53h"]
 [ext_resource type="Script" uid="uid://b7lfti04dej0k" path="res://Scripts/Pause_Menu_Restart.gd" id="10_71axn"]
 [ext_resource type="Script" uid="uid://bl0x3v6xioebp" path="res://Scripts/Pause_Menu_Menu.gd" id="11_dahhg"]
-[ext_resource type="Texture2D" uid="uid://bty3iv6sdqjim" path="res://Assets/7.png" id="11_lbihj"]
+[ext_resource type="Texture2D" uid="uid://dcrajdllb146j" path="res://Assets/Agent Alien.png" id="11_tfod6"]
 [ext_resource type="Script" uid="uid://c751ok6jx0kk" path="res://Scripts/Play_Main_Menu.gd" id="13_3cx6b"]
 [ext_resource type="Script" uid="uid://dfvw3o0odyapk" path="res://Scripts/Quit.gd" id="14_8r6kd"]
-[ext_resource type="Script" uid="uid://c7k15ck58duvr" path="res://Scripts/Encyclopedia.gd" id="14_acvyw"]
-[ext_resource type="Texture2D" uid="uid://k7mw26om5x76" path="res://Assets/UI/Monster_Encyclopedia.png" id="15_alh3a"]
-[ext_resource type="Texture2D" uid="uid://dg82m67se8ywm" path="res://Assets/UI/MenuButton.png" id="16_4q8tf"]
-[ext_resource type="Script" uid="uid://d1gr2ke1bulus" path="res://Scripts/Encyclopedia_Main_Menu.gd" id="17_x3xnh"]
 [ext_resource type="Script" uid="uid://1d5mrsomqn0n" path="res://Scripts/Enemy_Main.gd" id="18_x3xnh"]
 [ext_resource type="PackedScene" uid="uid://cfm2bxytmk1mw" path="res://Scenes/Enemy_Lava.tscn" id="21_vvhu1"]
 [ext_resource type="PackedScene" uid="uid://8hvo8nw7j7ro" path="res://Scenes/Lava.tscn" id="22_lbihj"]
 [ext_resource type="Script" uid="uid://der7olvy8qtoa" path="res://Scripts/Enemy_Lava_Main.gd" id="22_raj38"]
+[ext_resource type="Texture2D" uid="uid://bvtm3wow4cmq6" path="res://Assets/backgriouhd.png" id="23_lbihj"]
+[ext_resource type="Texture2D" uid="uid://bowx0kdwvx6r3" path="res://Assets/floor.png" id="24_8e0uq"]
 [ext_resource type="Script" uid="uid://pw4jjl7t338" path="res://Scripts/Lava.gd" id="24_raj38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
@@ -63,18 +61,6 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxwew"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acvyw"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -141,16 +127,8 @@ position = Vector2(15.5, 76.5)
 scale = Vector2(-20, 1)
 shape = SubResource("RectangleShape2D_iukft")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1323738905]
-offset_left = 11684.0
-offset_top = -80.0
-offset_right = 12844.0
-offset_bottom = 237.0
-scale = Vector2(-20, 1)
-color = Color(0.81949073, 0.6109961, 0.318982, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="Background" type="Sprite2D" parent="." unique_id=607886359]
+visible = false
 z_index = -14
 position = Vector2(337.49976, -2042.75)
 scale = Vector2(26.575888, 14.5606985)
@@ -210,7 +188,7 @@ script = ExtResource("11_dahhg")
 [node name="MainMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=1656267372]
 position = Vector2(557, 330.57965)
 scale = Vector2(0.6260417, 0.6044822)
-texture = ExtResource("11_lbihj")
+texture = ExtResource("11_tfod6")
 
 [node name="PlayMainMenu" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1080997465]
 process_mode = 3
@@ -222,41 +200,15 @@ scale = Vector2(0.19526586, 0.3199594)
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxwew")
 script = ExtResource("13_3cx6b")
 
-[node name="MonsterEncyclopedia" type="Button" parent="CanvasLayer2/MainMenu" unique_id=257785428]
-process_mode = 3
-offset_left = 421.69714
-offset_top = 452.32162
-offset_right = 2033.9761
-offset_bottom = 620.34827
-scale = Vector2(0.31302112, 0.27210426)
-theme_override_styles/normal = SubResource("StyleBoxFlat_acvyw")
-script = ExtResource("14_acvyw")
-
 [node name="Quit" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1784588953]
 process_mode = 3
-offset_left = -867.3543
-offset_top = 406.00092
-offset_right = -180.83575
-offset_bottom = 647.5395
+offset_left = -107.021484
+offset_top = 354.71735
+offset_right = 579.4971
+offset_bottom = 596.2559
 scale = Vector2(0.32138214, 0.33928958)
 theme_override_styles/normal = SubResource("StyleBoxFlat_8r6kd")
 script = ExtResource("14_8r6kd")
-
-[node name="MonsterEncyclopedia" type="Sprite2D" parent="CanvasLayer2" unique_id=481017261]
-visible = false
-position = Vector2(576.5, 326.25)
-scale = Vector2(1.2516198, 1.2456979)
-texture = ExtResource("15_alh3a")
-
-[node name="EncyclopediaMainMenu" type="TextureButton" parent="CanvasLayer2/MonsterEncyclopedia" unique_id=717755840]
-process_mode = 3
-offset_left = -460.60315
-offset_top = -260.29587
-offset_right = 1464.3969
-offset_bottom = 242.70413
-scale = Vector2(0.0658434, 0.067151755)
-texture_normal = ExtResource("16_4q8tf")
-script = ExtResource("17_x3xnh")
 
 [node name="Enemy_Lava" parent="." unique_id=1905237066 instance=ExtResource("21_vvhu1")]
 visible = true
@@ -282,15 +234,38 @@ script = ExtResource("18_x3xnh")
 wait_time = 1.45
 autostart = true
 
+[node name="Backgriouhd" type="Sprite2D" parent="." unique_id=1090058624]
+z_index = 1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-439, -1363)
+scale = Vector2(9.2421875, 4.296875)
+texture = ExtResource("23_lbihj")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1626153838]
+z_index = -1
+texture_filter = 1
+offset_left = -11600.0
+offset_top = -18907.0
+offset_right = -5765.0
+offset_bottom = -15755.0
+scale = Vector2(6, 6)
+texture = ExtResource("23_lbihj")
+stretch_mode = 1
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=16502707]
+z_index = -3
+position = Vector2(-56.99951, 447)
+scale = Vector2(182.90625, 6.984375)
+texture = ExtResource("24_8e0uq")
+
 [connection signal="timeout" from="CanvasLayer/TextureProgressBar/RegenTimer" to="Player" method="_on_regen_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/PlayPauseMenu" to="CanvasLayer2/PauseMenu/PlayPauseMenu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Restart" to="CanvasLayer2/PauseMenu/Restart" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Menu" to="CanvasLayer2/PauseMenu/Menu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MainMenu/PlayMainMenu" to="CanvasLayer2/MainMenu/PlayMainMenu" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer2/MainMenu/MonsterEncyclopedia" to="CanvasLayer2/MainMenu/MonsterEncyclopedia" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/MainMenu/Quit" to="CanvasLayer2/MainMenu/Quit" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" to="CanvasLayer2/MonsterEncyclopedia/EncyclopediaMainMenu" method="_on_pressed"]
 [connection signal="timeout" from="Enemy_Lava/Lava_Timer" to="Enemy_Lava" method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Lava/Lava_Despawn" to="Lava" method="_on_timer_timeout"]
 [connection signal="timeout" from="Node2D/Spawn_Timer" to="Node2D" method="_on_spawn_timer_timeout"]

@@ -10,7 +10,7 @@ var player_attack
 var can_attack: bool = true
 var is_attacking
 @export var health_ui: TextureProgressBar
-@export var regen_amount: int = 5
+@export var regen_amount: int = 10
 @onready var anim_player: AnimatedSprite2D = $Node2D/AnimatedSprite2D
 
 func _ready() -> void:
@@ -84,7 +84,7 @@ func _on_damage_timer_timeout() -> void:
 
 func take_damage() -> void:
 	if health > 1:
-		health -= 5
+		health -= 15
 		health_ui.value = health
 		print("hi")
 	else:

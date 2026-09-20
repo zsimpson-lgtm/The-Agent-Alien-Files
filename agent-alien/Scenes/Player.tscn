@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://nlnouaeystk8"]
 
-[ext_resource type="Script" uid="uid://b7gruql1r2jvy" path="res://Scripts/Player.gd" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://b7gruql1r2jvy" path="res://Scripts/player.gd" id="1_rpqav"]
 [ext_resource type="Texture2D" uid="uid://cj3jqu2q5fjuj" path="res://Assets/Player Animations/Attack Animation/beam0005.png" id="8_rxg2u"]
 [ext_resource type="Texture2D" uid="uid://b8lii6qmxsedi" path="res://Assets/Player Animations/Idle Animation/Idle0000.png" id="15_ulo2v"]
 [ext_resource type="Texture2D" uid="uid://dydbpqtmh0rum" path="res://Assets/Player Animations/Idle Animation/Idle0001.png" id="16_1iu4k"]
@@ -50,7 +50,7 @@ animations = [{
 "duration": 10.0,
 "texture": ExtResource("28_u4y2r")
 }],
-"loop": false,
+"loop": 1,
 "name": &"Attack",
 "speed": 30.0
 }, {
@@ -67,7 +67,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("18_5v66d")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }, {
@@ -84,7 +84,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("22_70hv0")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 5.0
 }]
@@ -123,6 +123,7 @@ scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_yoq75")
 animation = &"Attack"
 autoplay = "Idle"
+frame_progress = 0.13687417
 
 [node name="Damage_Timer" type="Timer" parent="." unique_id=1488192704]
 wait_time = 0.436
