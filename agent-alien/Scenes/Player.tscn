@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://nlnouaeystk8"]
 
 [ext_resource type="Script" uid="uid://b7gruql1r2jvy" path="res://Scripts/player.gd" id="1_rpqav"]
-[ext_resource type="Texture2D" uid="uid://cj3jqu2q5fjuj" path="res://Assets/Player Animations/Attack Animation/beam0005.png" id="8_rxg2u"]
-[ext_resource type="Texture2D" uid="uid://b8lii6qmxsedi" path="res://Assets/Player Animations/Idle Animation/Idle0000.png" id="15_ulo2v"]
-[ext_resource type="Texture2D" uid="uid://dydbpqtmh0rum" path="res://Assets/Player Animations/Idle Animation/Idle0001.png" id="16_1iu4k"]
-[ext_resource type="Texture2D" uid="uid://dxsni5n28yq84" path="res://Assets/Player Animations/Idle Animation/Idle0002.png" id="17_m0x7a"]
-[ext_resource type="Texture2D" uid="uid://dpohist1bhh7h" path="res://Assets/Player Animations/Idle Animation/Idle0003.png" id="18_5v66d"]
-[ext_resource type="Texture2D" uid="uid://c1i1jlnr0lrc2" path="res://Assets/Player Animations/Walk Animation/walk0000.png" id="19_x63xi"]
-[ext_resource type="Texture2D" uid="uid://bf8wvl4ne7r6i" path="res://Assets/Player Animations/Walk Animation/walk0001.png" id="20_i2e8t"]
-[ext_resource type="Texture2D" uid="uid://b58gkgrtettvs" path="res://Assets/Player Animations/Walk Animation/walk0002.png" id="21_qidb7"]
-[ext_resource type="Texture2D" uid="uid://6v3ws03rodb6" path="res://Assets/Player Animations/Walk Animation/walk0003.png" id="22_70hv0"]
-[ext_resource type="Texture2D" uid="uid://dmhgb1fyle0sb" path="res://Assets/Player Animations/Attack Animation/beam0020.png" id="23_v5fqo"]
-[ext_resource type="Texture2D" uid="uid://doh8g3jnicj0r" path="res://Assets/Player Animations/Attack Animation/beam0021.png" id="24_yf17c"]
-[ext_resource type="Texture2D" uid="uid://bmwpfe20wewso" path="res://Assets/Player Animations/Attack Animation/beam0022.png" id="25_awd2i"]
-[ext_resource type="Texture2D" uid="uid://djekb3ytenvn1" path="res://Assets/Player Animations/Attack Animation/beam0023.png" id="26_o2sks"]
-[ext_resource type="Texture2D" uid="uid://hyr7j7fgwuli" path="res://Assets/Player Animations/Attack Animation/beam0024.png" id="27_3rw25"]
-[ext_resource type="Texture2D" uid="uid://dkc3vemhei1lo" path="res://Assets/Player Animations/Attack Animation/beam0025.png" id="28_u4y2r"]
+[ext_resource type="Texture2D" uid="uid://cj3jqu2q5fjuj" path="res://Assets/Player Animations/Attack Animation/beam5.png" id="8_rxg2u"]
+[ext_resource type="Texture2D" uid="uid://b8lii6qmxsedi" path="res://Assets/Player Animations/Idle Animation/idle0.png" id="9_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://dydbpqtmh0rum" path="res://Assets/Player Animations/Idle Animation/idle1.png" id="10_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://dxsni5n28yq84" path="res://Assets/Player Animations/Idle Animation/idle2.png" id="11_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://dpohist1bhh7h" path="res://Assets/Player Animations/Idle Animation/idle3.png" id="18_5v66d"]
+[ext_resource type="Texture2D" uid="uid://c1i1jlnr0lrc2" path="res://Assets/Player Animations/Walk Animation/walk0.png" id="19_x63xi"]
+[ext_resource type="Texture2D" uid="uid://bf8wvl4ne7r6i" path="res://Assets/Player Animations/Walk Animation/walk1.png" id="20_i2e8t"]
+[ext_resource type="Texture2D" uid="uid://b58gkgrtettvs" path="res://Assets/Player Animations/Walk Animation/walk2.png" id="21_qidb7"]
+[ext_resource type="Texture2D" uid="uid://6v3ws03rodb6" path="res://Assets/Player Animations/Walk Animation/walk3.png" id="22_70hv0"]
+[ext_resource type="Texture2D" uid="uid://dmhgb1fyle0sb" path="res://Assets/Player Animations/Attack Animation/beam20.png" id="23_v5fqo"]
+[ext_resource type="Texture2D" uid="uid://doh8g3jnicj0r" path="res://Assets/Player Animations/Attack Animation/beam21.png" id="24_yf17c"]
+[ext_resource type="Texture2D" uid="uid://bmwpfe20wewso" path="res://Assets/Player Animations/Attack Animation/beam22.png" id="25_awd2i"]
+[ext_resource type="Texture2D" uid="uid://djekb3ytenvn1" path="res://Assets/Player Animations/Attack Animation/beam23.png" id="26_o2sks"]
+[ext_resource type="Texture2D" uid="uid://hyr7j7fgwuli" path="res://Assets/Player Animations/Attack Animation/beam24.png" id="27_3rw25"]
+[ext_resource type="Texture2D" uid="uid://dkc3vemhei1lo" path="res://Assets/Player Animations/Attack Animation/beam25.png" id="28_u4y2r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yoq75"]
 animations = [{
@@ -41,19 +41,19 @@ animations = [{
 "duration": 10.0,
 "texture": ExtResource("28_u4y2r")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Attack",
 "speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_ulo2v")
+"texture": ExtResource("9_fd4e3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_1iu4k")
+"texture": ExtResource("10_fd4e3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_m0x7a")
+"texture": ExtResource("11_fd4e3")
 }, {
 "duration": 1.0,
 "texture": ExtResource("18_5v66d")
@@ -89,7 +89,7 @@ size = Vector2(21.641792, 15.522389)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5v66d"]
 size = Vector2(18.973883, 9.55224)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1100361338 groups=["Player", "player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1100361338 groups=["player"]]
 texture_filter = 1
 position = Vector2(-11, 1)
 script = ExtResource("1_rpqav")
@@ -100,7 +100,6 @@ scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_yoq75")
 animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.5047459
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1565923269]
 texture_filter = 1
@@ -108,7 +107,7 @@ position = Vector2(9.999997, -6.499997)
 scale = Vector2(5.5, 5.5)
 shape = SubResource("RectangleShape2D_qbkls")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1387916537 groups=["player"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=1387916537]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=882496144]
 position = Vector2(10.500004, -7.0000033)
@@ -118,7 +117,7 @@ shape = SubResource("RectangleShape2D_rpqav")
 [node name="Node2D" type="Node2D" parent="." unique_id=2124907291]
 position = Vector2(27, -18)
 
-[node name="Area2D2" type="Area2D" parent="Node2D" unique_id=1393515011 groups=["Player", "player"]]
+[node name="Area2D2" type="Area2D" parent="Node2D" unique_id=1393515011 groups=["player"]]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Area2D2" unique_id=4499900]
 position = Vector2(-16.5625, 18.000008)

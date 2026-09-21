@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const score_label_prefix := "Score: "
 const SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 var gravity: = 980
@@ -9,9 +10,12 @@ var touching_enemy
 var player_attack
 var can_attack: bool = true
 var is_attacking
+var score := 0
+
 @export var health_ui: TextureProgressBar
 @export var regen_amount: int = 10
 @onready var anim_player: AnimatedSprite2D = $Node2D/AnimatedSprite2D
+@onready var score_label: Label = $"../CanvasLayer2/score_label"
 
 func _ready() -> void:
 	health_ui.max_value = health
@@ -62,11 +66,9 @@ func _process(delta: float) -> void:
 		
 	move_and_slide()
 	
-	
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-	var enemy = get_tree().get_first_node_in_group("Enemy")
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("enemy"):
 		$Damage_Timer.start()
 
 func _on_play_pressed() -> void:
@@ -77,7 +79,7 @@ func _on_regen_timer_timeout() -> void:
 		health_ui.value += regen_amount
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("enemy"):
 		$Damage_Timer.stop()			
 
 func _on_damage_timer_timeout() -> void:
@@ -87,10 +89,15 @@ func take_damage() -> void:
 	if health > 1:
 		health -= 10
 		health_ui.value = health
-		print("hi")
+
 	else:
 		get_tree().call_deferred("reload_current_scene")
 
 func _on_attack_timer_timeout() -> void:
 	can_attack = true
 	is_attacking = false
+
+# Updates the score label after killing an enemy 
+func add_score(amount: int) -> void:
+	score += amount
+	score_label.text = score_label_prefix + str(score)

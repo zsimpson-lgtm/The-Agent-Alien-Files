@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://b7nvuhvekrcca"]
 
-[ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/Player.tscn" id="1_gl6un"]
-[ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/UI/Healthbar_Empty.png" id="4_b2bpf"]
-[ext_resource type="Texture2D" uid="uid://1pesxjxisd1p" path="res://Assets/UI/Healthbar_Full.png" id="5_7lihs"]
-[ext_resource type="Texture2D" uid="uid://0nx088tsqabq" path="res://Assets/UI/Pause.png" id="6_7lihs"]
-[ext_resource type="Script" uid="uid://d2et78s6i48qk" path="res://Scripts/Pause.gd" id="7_2irst"]
-[ext_resource type="Texture2D" uid="uid://b6k8texn66orb" path="res://Assets/UI/Pause_Menu.png" id="7_fgofq"]
-[ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/Pause_Menu_Play.gd" id="9_bf53h"]
-[ext_resource type="Script" uid="uid://b7lfti04dej0k" path="res://Scripts/Pause_Menu_Restart.gd" id="10_71axn"]
-[ext_resource type="Script" uid="uid://bl0x3v6xioebp" path="res://Scripts/Pause_Menu_Menu.gd" id="11_dahhg"]
-[ext_resource type="Texture2D" uid="uid://dcrajdllb146j" path="res://Assets/Agent Alien.png" id="11_tfod6"]
-[ext_resource type="Script" uid="uid://c751ok6jx0kk" path="res://Scripts/Play_Main_Menu.gd" id="13_3cx6b"]
-[ext_resource type="Script" uid="uid://dfvw3o0odyapk" path="res://Scripts/Quit.gd" id="14_8r6kd"]
-[ext_resource type="Script" uid="uid://1d5mrsomqn0n" path="res://Scripts/Enemy_Main.gd" id="18_x3xnh"]
-[ext_resource type="Texture2D" uid="uid://bvtm3wow4cmq6" path="res://Assets/backgriouhd.png" id="23_lbihj"]
-[ext_resource type="Texture2D" uid="uid://bowx0kdwvx6r3" path="res://Assets/floor.png" id="24_8e0uq"]
+[ext_resource type="Texture2D" uid="uid://bpyvnkpp5oujq" path="res://Assets/Visual/healthbar_empty.png" id="1_nb51f"]
+[ext_resource type="Texture2D" uid="uid://1pesxjxisd1p" path="res://Assets/Visual/healthbar_full.png" id="2_nnt18"]
+[ext_resource type="PackedScene" uid="uid://nlnouaeystk8" path="res://Scenes/player.tscn" id="3_ewbju"]
+[ext_resource type="Texture2D" uid="uid://0nx088tsqabq" path="res://Assets/Visual/pause_button.png" id="4_85qyi"]
+[ext_resource type="Script" uid="uid://d2et78s6i48qk" path="res://Scripts/pause_button.gd" id="5_iivbl"]
+[ext_resource type="Texture2D" uid="uid://b6k8texn66orb" path="res://Assets/Visual/pause_menu.png" id="6_7nbq1"]
+[ext_resource type="Script" uid="uid://dnf8nisbn4ktf" path="res://Scripts/pause_menu_play.gd" id="7_exi56"]
+[ext_resource type="Script" uid="uid://b7lfti04dej0k" path="res://Scripts/pause_menu_restart.gd" id="8_7t8sx"]
+[ext_resource type="Script" uid="uid://bl0x3v6xioebp" path="res://Scripts/pause_menu_menu.gd" id="9_mg4q0"]
+[ext_resource type="Texture2D" uid="uid://dcrajdllb146j" path="res://Assets/Visual/title.png" id="10_vm72l"]
+[ext_resource type="Script" uid="uid://c751ok6jx0kk" path="res://Scripts/play_main_menu.gd" id="11_22asu"]
+[ext_resource type="Script" uid="uid://dfvw3o0odyapk" path="res://Scripts/quit.gd" id="12_fkdbe"]
+[ext_resource type="Script" uid="uid://1d5mrsomqn0n" path="res://Scripts/enemy_spawning.gd" id="13_81klo"]
+[ext_resource type="Texture2D" uid="uid://bvtm3wow4cmq6" path="res://Assets/Visual/background.png" id="14_tgy6u"]
+[ext_resource type="Texture2D" uid="uid://bowx0kdwvx6r3" path="res://Assets/Visual/floor.png" id="15_cwurv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iukft"]
 size = Vector2(1155, 314)
@@ -99,17 +99,16 @@ offset_top = 117.93602
 offset_right = 1245.0399
 offset_bottom = 466.936
 value = 100.0
-texture_under = ExtResource("4_b2bpf")
-texture_progress = ExtResource("5_7lihs")
+texture_under = ExtResource("1_nb51f")
+texture_progress = ExtResource("2_nnt18")
 
 [node name="RegenTimer" type="Timer" parent="CanvasLayer/TextureProgressBar" unique_id=1847830039]
 wait_time = 1.033
 autostart = true
 
-[node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("health_ui") instance=ExtResource("1_gl6un")]
-position = Vector2(-120, -34)
+[node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("health_ui") instance=ExtResource("3_ewbju")]
+position = Vector2(-119.85, -34)
 health_ui = NodePath("../CanvasLayer/TextureProgressBar")
-regen_amount = null
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=665921378]
 position = Vector2(0, 1)
@@ -132,14 +131,15 @@ offset_right = 1273.0
 offset_bottom = 213.0
 scale = Vector2(0.2, 0.2)
 toggle_mode = true
-texture_normal = ExtResource("6_7lihs")
-script = ExtResource("7_2irst")
+action_mode = 0
+texture_normal = ExtResource("4_85qyi")
+script = ExtResource("5_iivbl")
 
 [node name="PauseMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=444767274]
 visible = false
 position = Vector2(576.99994, 700)
 scale = Vector2(0.19421557, 0.16578041)
-texture = ExtResource("7_fgofq")
+texture = ExtResource("6_7nbq1")
 offset = Vector2(0, -2500)
 
 [node name="PlayPauseMenu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1412089164]
@@ -151,7 +151,7 @@ offset_bottom = -2726.4983
 theme_override_styles/normal = SubResource("StyleBoxFlat_bf53h")
 toggle_mode = true
 action_mode = 0
-script = ExtResource("9_bf53h")
+script = ExtResource("7_exi56")
 
 [node name="Restart" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1157154173]
 process_mode = 3
@@ -163,7 +163,7 @@ theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.874509
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
 theme_override_styles/normal = SubResource("StyleBoxFlat_3so38")
-script = ExtResource("10_71axn")
+script = ExtResource("8_7t8sx")
 
 [node name="Menu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1562250499]
 process_mode = 3
@@ -172,12 +172,12 @@ offset_top = -1381.3453
 offset_right = 741.44434
 offset_bottom = -922.9076
 theme_override_styles/normal = SubResource("StyleBoxFlat_3cx6b")
-script = ExtResource("11_dahhg")
+script = ExtResource("9_mg4q0")
 
 [node name="MainMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=1656267372]
 position = Vector2(557, 330.57965)
 scale = Vector2(0.6260417, 0.6044822)
-texture = ExtResource("11_tfod6")
+texture = ExtResource("10_vm72l")
 
 [node name="PlayMainMenu" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1080997465]
 process_mode = 3
@@ -187,7 +187,7 @@ offset_right = 1457.337
 offset_bottom = 326.17413
 scale = Vector2(0.19526586, 0.3199594)
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxwew")
-script = ExtResource("13_3cx6b")
+script = ExtResource("11_22asu")
 
 [node name="Quit" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1784588953]
 process_mode = 3
@@ -197,10 +197,21 @@ offset_right = 579.4971
 offset_bottom = 596.2559
 scale = Vector2(0.32138214, 0.33928958)
 theme_override_styles/normal = SubResource("StyleBoxFlat_8r6kd")
-script = ExtResource("14_8r6kd")
+script = ExtResource("12_fkdbe")
+
+[node name="score_label" type="Label" parent="CanvasLayer2" unique_id=1139982860]
+process_mode = 3
+visible = false
+texture_filter = 1
+offset_left = 2.0
+offset_top = 92.0
+offset_right = 42.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0.3764706, 0.5294118, 0.2901961, 1)
+theme_override_font_sizes/font_size = 41
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1177315260]
-script = ExtResource("18_x3xnh")
+script = ExtResource("13_81klo")
 
 [node name="Spawn_Timer" type="Timer" parent="Node2D" unique_id=1833584203]
 wait_time = 1.45
@@ -214,14 +225,14 @@ offset_top = -18907.0
 offset_right = -5765.0
 offset_bottom = -15755.0
 scale = Vector2(6, 6)
-texture = ExtResource("23_lbihj")
+texture = ExtResource("14_tgy6u")
 stretch_mode = 1
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=16502707]
 z_index = -3
 position = Vector2(-56.99951, 447)
 scale = Vector2(182.90625, 6.984375)
-texture = ExtResource("24_8e0uq")
+texture = ExtResource("15_cwurv")
 
 [connection signal="timeout" from="CanvasLayer/TextureProgressBar/RegenTimer" to="Player" method="_on_regen_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
