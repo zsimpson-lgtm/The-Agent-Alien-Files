@@ -1,15 +1,14 @@
 extends TextureButton
 
-func _ready() -> void:
-	get_node("Node2D/CanvasLayer2/Pause Menu")
-	print("node")
+@export var pause_menu: Sprite2D
+@export var pause_menu_play: Button
+@export var pause_menu_restart: Button
+@export var pause_menu_menu: Button
 
-func _process(delta: float) -> void:
-	pass
-
+# Shows the pause menu and its buttons when pressed, it also pauses the game.
 func _on_pressed() -> void:
-	$"../PauseMenu".show()
-	$"../PauseMenu/PlayPauseMenu".show()
-	$"../PauseMenu/Restart".show()
-	$"../PauseMenu/Menu".show()
-	get_tree().paused=true
+	pause_menu.show()
+	pause_menu_play.show()
+	pause_menu_restart.show()
+	pause_menu_menu.show()
+	get_tree().paused = true

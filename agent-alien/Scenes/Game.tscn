@@ -87,6 +87,21 @@ offset = Vector2(4, 4)
 scale = Vector2(0.2, 0.2)
 transform = Transform2D(0.2, 0, 0, 0.2, 4, 4)
 
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=145365135 node_paths=PackedStringArray("pause_menu", "pause_menu_play", "pause_menu_restart", "pause_menu_menu")]
+process_mode = 1
+offset_left = 5545.0
+offset_top = 15.000001
+offset_right = 6300.0
+offset_bottom = 1015.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("4_85qyi")
+script = ExtResource("5_iivbl")
+pause_menu = NodePath("../../CanvasLayer2/PauseMenu")
+pause_menu_play = NodePath("../../CanvasLayer2/PauseMenu/PlayPauseMenu")
+pause_menu_restart = NodePath("../../CanvasLayer2/PauseMenu/Restart")
+pause_menu_menu = NodePath("../../CanvasLayer2/PauseMenu/Menu")
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1462491059]
 show_behind_parent = true
 anchors_preset = -1
@@ -106,9 +121,9 @@ texture_progress = ExtResource("2_nnt18")
 wait_time = 1.033
 autostart = true
 
-[node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("health_ui") instance=ExtResource("3_ewbju")]
+[node name="Player" parent="." unique_id=1100361338 node_paths=PackedStringArray("player_health_ui") instance=ExtResource("3_ewbju")]
 position = Vector2(-119.85, -34)
-health_ui = NodePath("../CanvasLayer/TextureProgressBar")
+player_health_ui = NodePath("../CanvasLayer/TextureProgressBar")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=665921378]
 position = Vector2(0, 1)
@@ -123,38 +138,35 @@ scale = Vector2(-20, 1)
 shape = SubResource("RectangleShape2D_iukft")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1662910130]
-
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer2" unique_id=397797266]
-offset_left = 1118.0
-offset_top = 3.0
-offset_right = 1273.0
-offset_bottom = 213.0
-scale = Vector2(0.2, 0.2)
-toggle_mode = true
-action_mode = 0
-texture_normal = ExtResource("4_85qyi")
-script = ExtResource("5_iivbl")
+process_mode = 2
 
 [node name="PauseMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=444767274]
+process_mode = 2
 visible = false
+z_index = 3
 position = Vector2(576.99994, 700)
 scale = Vector2(0.19421557, 0.16578041)
 texture = ExtResource("6_7nbq1")
 offset = Vector2(0, -2500)
 
-[node name="PlayPauseMenu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1412089164]
+[node name="PlayPauseMenu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1412089164 node_paths=PackedStringArray("pause_menu", "pause_menu_play", "pause_menu_restart", "pause_menu_menu")]
 process_mode = 3
+visible = false
 offset_left = -762.03955
 offset_top = -3184.936
 offset_right = 725.99756
 offset_bottom = -2726.4983
 theme_override_styles/normal = SubResource("StyleBoxFlat_bf53h")
 toggle_mode = true
-action_mode = 0
 script = ExtResource("7_exi56")
+pause_menu = NodePath("..")
+pause_menu_play = NodePath(".")
+pause_menu_restart = NodePath("../Restart")
+pause_menu_menu = NodePath("../Menu")
 
-[node name="Restart" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1157154173]
+[node name="Restart" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1157154173 node_paths=PackedStringArray("player", "score_label", "player_health_ui")]
 process_mode = 3
+visible = false
 offset_left = -767.1885
 offset_top = -2286.1567
 offset_right = 720.84863
@@ -164,22 +176,30 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
 theme_override_styles/normal = SubResource("StyleBoxFlat_3so38")
 script = ExtResource("8_7t8sx")
+player = NodePath("../../../Player")
+score_label = NodePath("../../score_label")
+player_health_ui = NodePath("../../../CanvasLayer/TextureProgressBar")
 
-[node name="Menu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1562250499]
+[node name="Menu" type="Button" parent="CanvasLayer2/PauseMenu" unique_id=1562250499 node_paths=PackedStringArray("main_menu", "pause_menu", "score_label", "player")]
 process_mode = 3
+visible = false
 offset_left = -746.5928
 offset_top = -1381.3453
 offset_right = 741.44434
 offset_bottom = -922.9076
 theme_override_styles/normal = SubResource("StyleBoxFlat_3cx6b")
 script = ExtResource("9_mg4q0")
+main_menu = NodePath("../../MainMenu")
+pause_menu = NodePath("..")
+score_label = NodePath("../../score_label")
+player = NodePath("../../../Player")
 
 [node name="MainMenu" type="Sprite2D" parent="CanvasLayer2" unique_id=1656267372]
 position = Vector2(557, 330.57965)
 scale = Vector2(0.6260417, 0.6044822)
 texture = ExtResource("10_vm72l")
 
-[node name="PlayMainMenu" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1080997465]
+[node name="PlayMainMenu" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1080997465 node_paths=PackedStringArray("main_menu", "score_label")]
 process_mode = 3
 offset_left = -154.94174
 offset_top = 32.127274
@@ -188,6 +208,8 @@ offset_bottom = 326.17413
 scale = Vector2(0.19526586, 0.3199594)
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxwew")
 script = ExtResource("11_22asu")
+main_menu = NodePath("..")
+score_label = NodePath("../../score_label")
 
 [node name="Quit" type="Button" parent="CanvasLayer2/MainMenu" unique_id=1784588953]
 process_mode = 3
@@ -201,7 +223,6 @@ script = ExtResource("12_fkdbe")
 
 [node name="score_label" type="Label" parent="CanvasLayer2" unique_id=1139982860]
 process_mode = 3
-visible = false
 texture_filter = 1
 offset_left = 2.0
 offset_top = 92.0
@@ -210,8 +231,9 @@ offset_bottom = 115.0
 theme_override_colors/font_color = Color(0.3764706, 0.5294118, 0.2901961, 1)
 theme_override_font_sizes/font_size = 41
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1177315260]
+[node name="Node2D" type="Node2D" parent="." unique_id=1177315260 node_paths=PackedStringArray("camera")]
 script = ExtResource("13_81klo")
+camera = NodePath("../Player/Camera2D")
 
 [node name="Spawn_Timer" type="Timer" parent="Node2D" unique_id=1833584203]
 wait_time = 1.45
@@ -234,8 +256,8 @@ position = Vector2(-56.99951, 447)
 scale = Vector2(182.90625, 6.984375)
 texture = ExtResource("15_cwurv")
 
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="CanvasLayer/TextureButton" method="_on_pressed"]
 [connection signal="timeout" from="CanvasLayer/TextureProgressBar/RegenTimer" to="Player" method="_on_regen_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer2/TextureButton" to="CanvasLayer2/TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/PlayPauseMenu" to="CanvasLayer2/PauseMenu/PlayPauseMenu" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Restart" to="CanvasLayer2/PauseMenu/Restart" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Menu" to="CanvasLayer2/PauseMenu/Menu" method="_on_pressed"]

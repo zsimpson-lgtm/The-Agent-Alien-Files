@@ -27,7 +27,7 @@ func _process(_delta):
 	else:
 		attack_area.monitoring = false
 # This checks if the player's attack animation is at the correct visually
-# Representative frames to deal damage to the enemy.
+# Representative frames to kill the enemy.
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	# It first checks if the erea it entered is in the player group
 	# If not, the function returns and stops running.
@@ -40,15 +40,15 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		return
 	# Finally, the for loop checks each attack frame to see if it matches
 	# The player's current animation frame. 
-	# If it matches, the enemy takes damage.
+	# If it matches, the enemy dies.
 	for frame in attacking_frames:
 		if player_attack.frame == frame:
-			take_damage()
+			enemy_die()
 			break
 
 
-func take_damage() -> void:
-	player.add_score(kill_score)
-	queue_free()
+func enemy_die() -> void:
+	player.add_score(kill_score) # Adds kill score.
+	queue_free() # Remove enemy.
 	
 	

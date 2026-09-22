@@ -1,19 +1,27 @@
 extends Button
 
-@onready var enemy = get_parent().get_node("enemy")
-@onready var player = $"../../../Player"
-@onready var score_label: Label = $"../../score_label"
-@export var health_ui: TextureProgressBar
-func _on_pressed() -> void:
-	player.score = 0
-	score_label.text = "Score: " + str(player.score)
+const PLAYER_MAX_HEALTH: int = 100
+const PLAYER_SPAWN_X: int = -100
+const PLAYER_SPAWN_Y: int = 34
+const ENEMY_GROUP: String = "enemy"
+const STARTING_SCORE: int = 0
+const SCORE_LABEL_PREFIX: String = "Score: "
+@export var player: Player
+@export var score_label: Label 
+@export var player_health_ui: TextureProgressBar
+@export var pause_menu: Sprite2D
 
-	$"../../../Player".position = Vector2(-100, 34)
-	$"../../../Player".health = 100
-	player.health_ui.max_value = player.health
-	player.health_ui.value = player.health
-	get_tree().paused=false
-	$"..".hide()
-	for enemy in get_tree().get_nodes_in_group("enemy"):
-		enemy.queue_free()
-		
+# Controls resetting of player health, location and score values.
+# It kills all enemies, without giving score.
+# This effectively resets the game without having to return to main menu.
+func _on_pressed() -> void:
+	player.score = STARTING_SCORE
+	score_label.text = SCORE_LABEL_PREFIX + str(player.score) 
+	player.position = Vector2(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
+	player.player_current_health = PLAYER_MAX_HEALTH  
+	player.player_health_ui.value = player.player_current_health
+	get_tree().paused = false
+	pause_menu.hide()
+
+	for alive_enemy in get_tree().get_nodes_in_group(ENEMY_GROUP):
+		alive_enemy.queue_free()

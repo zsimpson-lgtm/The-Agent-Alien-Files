@@ -126,7 +126,7 @@ scale = Vector2(6.7, -6.7)
 shape = SubResource("RectangleShape2D_5v66d")
 
 [node name="Damage_Timer" type="Timer" parent="." unique_id=1488192704]
-wait_time = 0.436
+wait_time = 0.513
 
 [node name="Attack_Timer" type="Timer" parent="." unique_id=529492459]
 wait_time = 0.811
