@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://nlnouaeystk8"]
 
-[ext_resource type="Script" uid="uid://b7gruql1r2jvy" path="res://Scripts/player.gd" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://pidbwuv0gqas" path="res://Scripts/player.gd" id="1_rpqav"]
 [ext_resource type="Texture2D" uid="uid://cj3jqu2q5fjuj" path="res://Assets/Player Animations/Attack Animation/beam5.png" id="8_rxg2u"]
 [ext_resource type="Texture2D" uid="uid://b8lii6qmxsedi" path="res://Assets/Player Animations/Idle Animation/idle0.png" id="9_fd4e3"]
 [ext_resource type="Texture2D" uid="uid://dydbpqtmh0rum" path="res://Assets/Player Animations/Idle Animation/idle1.png" id="10_fd4e3"]
@@ -41,8 +41,8 @@ animations = [{
 "duration": 10.0,
 "texture": ExtResource("28_u4y2r")
 }],
-"loop": 0,
-"name": &"Attack",
+"loop": false,
+"name": &"attack",
 "speed": 30.0
 }, {
 "frames": [{
@@ -58,8 +58,8 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("18_5v66d")
 }],
-"loop": 1,
-"name": &"Idle",
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -75,65 +75,68 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("22_70hv0")
 }],
-"loop": 1,
-"name": &"Walk",
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbkls"]
-size = Vector2(25.090908, 16.90909)
+size = Vector2(17.454544, 16.90909)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqav"]
-size = Vector2(21.641792, 15.522389)
+size = Vector2(17.313435, 16.567165)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5v66d"]
-size = Vector2(18.973883, 9.55224)
+size = Vector2(17.014927, 7.9104486)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1100361338 groups=["player"]]
+[node name="PlayerSprite" type="CharacterBody2D" unique_id=1100361338 node_paths=PackedStringArray("player_animation", "damage_timer", "player_attack_region", "attack_timer") groups=["player"]]
 texture_filter = 1
 position = Vector2(-11, 1)
 script = ExtResource("1_rpqav")
+player_animation = NodePath("PlayerAnimation")
+damage_timer = NodePath("DamageTimer")
+player_attack_region = NodePath("AttackComponents")
+attack_timer = NodePath("AttackTimer")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=367247104]
+[node name="PlayerAnimation" type="AnimatedSprite2D" parent="." unique_id=367247104]
 position = Vector2(11.999998, -13)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_yoq75")
-animation = &"Attack"
-autoplay = "Idle"
+animation = &"walk"
+autoplay = "idle"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1565923269]
+[node name="PlayerHitbox" type="CollisionShape2D" parent="." unique_id=1565923269]
 texture_filter = 1
-position = Vector2(9.999997, -6.499997)
+position = Vector2(13.000001, -3.4999986)
 scale = Vector2(5.5, 5.5)
 shape = SubResource("RectangleShape2D_qbkls")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1387916537]
+[node name="DamageArea" type="Area2D" parent="." unique_id=1387916537]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=882496144]
-position = Vector2(10.500004, -7.0000033)
+[node name="DamageAreaHitbox" type="CollisionShape2D" parent="DamageArea" unique_id=882496144]
+position = Vector2(11.999998, -4.5000033)
 scale = Vector2(6.7, 6.7)
 shape = SubResource("RectangleShape2D_rpqav")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=2124907291]
+[node name="AttackComponents" type="Node2D" parent="." unique_id=2124907291]
 position = Vector2(27, -18)
 
-[node name="Area2D2" type="Area2D" parent="Node2D" unique_id=1393515011 groups=["player"]]
+[node name="AttackArea" type="Area2D" parent="AttackComponents" unique_id=1393515011 groups=["player"]]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Area2D2" unique_id=4499900]
-position = Vector2(-16.5625, 18.000008)
+[node name="AttackAreaHitbox" type="CollisionShape2D" parent="AttackComponents/AttackArea" unique_id=4499900]
+position = Vector2(-16, 10.49999)
 rotation = 3.1415925
 scale = Vector2(6.7, -6.7)
 shape = SubResource("RectangleShape2D_5v66d")
 
-[node name="Damage_Timer" type="Timer" parent="." unique_id=1488192704]
-wait_time = 0.513
+[node name="DamageTimer" type="Timer" parent="." unique_id=1488192704]
 
-[node name="Attack_Timer" type="Timer" parent="." unique_id=529492459]
-wait_time = 0.811
+[node name="AttackTimer" type="Timer" parent="." unique_id=529492459]
+wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="area_entered" from="Node2D/Area2D2" to="." method="_on_area_2d_2_area_entered"]
-[connection signal="timeout" from="Damage_Timer" to="." method="_on_damage_timer_timeout"]
-[connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="AttackComponents/AttackArea" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

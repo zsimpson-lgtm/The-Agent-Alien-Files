@@ -5,6 +5,7 @@ extends TextureButton
 @export var pause_menu_restart: Button
 @export var pause_menu_menu: Button
 
+
 # Shows the pause menu and its buttons when pressed, it also pauses the game.
 func _on_pressed() -> void:
 	pause_menu.show()

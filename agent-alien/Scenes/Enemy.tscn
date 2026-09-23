@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://de2r5ochsq0ji" path="res://Assets/Enemy Animations/Ball/roll7.png" id="9_dascy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idouy"]
-radius = 29.537361
+radius = 33.59132
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0o0ue"]
 radius = 28.0
@@ -43,31 +43,31 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_dascy")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=428399118 groups=["enemy"]]
+[node name="EnemySprite" type="CharacterBody2D" unique_id=428399118 groups=["enemy"]]
 texture_filter = 1
 script = ExtResource("1_hghv2")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1810061324 groups=["enemy"]]
+[node name="DamageArea" type="Area2D" parent="." unique_id=1810061324 groups=["enemy"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1587970002 groups=["enemy"]]
+[node name="DamageAreaHitbox" type="CollisionShape2D" parent="DamageArea" unique_id=1587970002 groups=["enemy"]]
 position = Vector2(0.50000095, -6.4999995)
 scale = Vector2(1, 1.01)
 shape = SubResource("CircleShape2D_idouy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779349581 groups=["enemy"]]
+[node name="EnemyHitbox" type="CollisionShape2D" parent="." unique_id=1779349581 groups=["enemy"]]
 position = Vector2(1, -6)
 shape = SubResource("CircleShape2D_0o0ue")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=11175689 groups=["enemy"]]
+[node name="EnemyAnimation" type="AnimatedSprite2D" parent="." unique_id=11175689 groups=["enemy"]]
 position = Vector2(1, -6.0000005)
 scale = Vector2(0.0899471, 0.093474425)
 sprite_frames = SubResource("SpriteFrames_rm7px")
 autoplay = "default"
 frame_progress = 0.67444056
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_area_2d_area_entered"]
